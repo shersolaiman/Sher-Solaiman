@@ -147,7 +147,10 @@
 .sher-brief-cta{grid-area:cta;align-self:center;justify-self:end;margin-right:18px;padding:15px 24px;border:1px solid #10284d;border-radius:999px;background:#10284d;color:#fff;font:600 14px/1 'Plus Jakarta Sans',Arial,sans-serif;letter-spacing:.02em;box-shadow:0 8px 18px rgba(16,40,77,.12)}
 .sher-brief-cta span{color:#d0a94b;margin-left:8px;font-size:17px}
 @media(max-width:700px){.sher-editorial-about{grid-template-columns:1fr;gap:22px;margin-top:34px;padding:42px 12px 40px}.sher-editorial-about:before{top:14px;right:12px}.sher-about-wordmark{font-size:72px}.sher-editorial-about h3{font-size:40px;margin-top:0}.sher-about-quote{margin-top:26px}.sher-about-quote p{font-size:26px}.sher-brief-card{grid-template-columns:1fr;grid-template-areas:'kicker' 'title' 'body' 'cta';row-gap:0;padding:42px 12px 48px;border-radius:0}.sher-brief-card h2{font-size:48px}.sher-brief-cta{justify-self:start;margin:28px 0 0 20px}.sher-brief-card:after{right:12px}}
-</style></head>
+</style><script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+</head>
 <body class="relative min-h-screen">
 
     <!-- Ambient Writing Background Animation -->
@@ -1090,6 +1093,91 @@ header:before,header:after,header .w-9:after{content:none!important;display:none
   const previousOpen=window.openDashPanel;
   if(typeof previousOpen==='function')window.openDashPanel=function(name){const result=previousOpen.apply(this,arguments);if(name==='site')setTimeout(()=>syncEditorFields(readSettings()),0);return result;};
   window.__sherSyncAdminFields=()=>syncEditorFields(readSettings());
+})();
+</script>
+<script id="sharedSettingsBridge">
+(function(){
+  const firebaseConfig={
+    apiKey:'AIzaSyBkPwQkZgasjVhGfXQOmEvas3SL7R1kB0w',
+    authDomain:'shersolaiman-portfolio.firebaseapp.com',
+    projectId:'shersolaiman-portfolio',
+    storageBucket:'shersolaiman-portfolio.firebasestorage.app',
+    messagingSenderId:'279965494459',
+    appId:'1:279965494459:web:82ea1aecdca0608c5acd9e',
+    measurementId:'G-CQHQVBHNPS'
+  };
+  const ADMIN_EMAIL='shersolaiman1@gmail.com';
+  const SETTINGS_COLLECTION='siteSettings';
+  const SETTINGS_DOCUMENT='homepage';
+  if(!window.firebase||!window.firebase.initializeApp)return;
+  if(!firebase.apps.length)firebase.initializeApp(firebaseConfig);
+  const auth=firebase.auth();
+  const db=firebase.firestore();
+  let currentUser=null;
+  const editableIds=['aboutWordmark','aboutHeading','about','aboutQuote','aboutHeadingFont','aboutBodyFont','aboutHeadingSize','aboutBodySize','aboutTextColor','aboutAccentColor','aboutBg','aboutPadding','briefKicker','briefHeading','briefText','briefButton','briefHeadingFont','briefHeadingSize','briefTextColor','briefBg','briefButtonColor','briefPadding','briefRadius','quote','attribution','tag','accent'];
+  function readLocal(){try{return JSON.parse(localStorage.getItem('sherSettings')||'{}')}catch(_){return {}}}
+  function saveLocal(settings){localStorage.setItem('sherSettings',JSON.stringify(settings));}
+  function collectSettings(){
+    const settings=readLocal();
+    editableIds.forEach(id=>{const field=document.getElementById('d'+id.charAt(0).toUpperCase()+id.slice(1));if(field)settings[id]=field.type==='checkbox'?field.checked:field.value;});
+    if(window.dLogoImage)settings.logoImage=window.dLogoImage;
+    if(window.dHeroImage)settings.heroImage=window.dHeroImage;
+    return settings;
+  }
+  function applySettings(settings){
+    saveLocal(settings);
+    const brand=document.getElementById('headerBrandText');
+    if(brand&&settings.brandText)brand.textContent=settings.brandText;
+    const author=document.getElementById('displayAuthor');
+    if(author&&settings.attribution)author.textContent='— '+settings.attribution.replace(/^—\\s*/,'');
+    const quote=document.getElementById('displayQuoteText');
+    if(quote&&settings.quote)quote.textContent=settings.quote;
+    const tagline=document.getElementById('displayTagline');
+    if(tagline&&settings.tag)tagline.textContent=settings.tag;
+    if(typeof window.applySherEditorialSettings==='function')window.applySherEditorialSettings();
+    if(typeof window.applyVisitor==='function')window.applyVisitor(settings);
+  }
+  async function loadSharedSettings(){
+    try{
+      const snapshot=await db.collection(SETTINGS_COLLECTION).doc(SETTINGS_DOCUMENT).get();
+      if(snapshot.exists)applySettings({...readLocal(),...snapshot.data()});
+    }catch(error){console.warn('Firebase settings read failed',error);}
+  }
+  function openLogin(){
+    const modal=document.getElementById('adminLoginModal');
+    if(modal)modal.classList.remove('hidden');
+  }
+  function closeLogin(){
+    const modal=document.getElementById('adminLoginModal');
+    if(modal)modal.classList.add('hidden');
+  }
+  window.adminGate=function(){if(currentUser&&currentUser.email===ADMIN_EMAIL){openDashboard();}else openLogin();};
+  window.adminLogin=async function(event){
+    event?.preventDefault();
+    const email=document.getElementById('loginEmail')?.value.trim();
+    const password=document.getElementById('loginPassword')?.value;
+    const error=document.getElementById('loginError');
+    try{
+      await auth.signInWithEmailAndPassword(email,password);
+      if(document.getElementById('rememberAdmin')?.checked)localStorage.setItem('firebaseAdminRemembered','true');
+      if(error)error.classList.add('hidden');
+      closeLogin();
+      if(typeof openDashboard==='function')openDashboard();
+    }catch(_){if(error){error.textContent='Invalid Firebase email or password.';error.classList.remove('hidden');}}
+  };
+  window.saveDashSite=async function(){
+    if(!currentUser||currentUser.email!==ADMIN_EMAIL){openLogin();return;}
+    const settings=collectSettings();
+    try{
+      await db.collection(SETTINGS_COLLECTION).doc(SETTINGS_DOCUMENT).set(settings,{merge:true});
+      applySettings(settings);
+      const toast=document.createElement('div');toast.textContent='Homepage changes saved for all visitors';toast.style.cssText='position:fixed;right:18px;bottom:18px;z-index:9999;padding:12px 16px;background:#10284d;color:#fff;border-radius:10px;font:600 13px Arial;';document.body.appendChild(toast);setTimeout(()=>toast.remove(),2600);
+    }catch(error){alert('Save failed. Check Firebase Rules and your Admin login.');console.error(error);}
+  };
+  window.adminLogout=async function(){await auth.signOut();localStorage.removeItem('firebaseAdminRemembered');if(typeof closeDashboard==='function')closeDashboard();};
+  auth.onAuthStateChanged(user=>{currentUser=user;if(user&&user.email===ADMIN_EMAIL)loadSharedSettings();});
+  document.addEventListener('DOMContentLoaded',loadSharedSettings);
+  window.addEventListener('focus',loadSharedSettings);
 })();
 </script>
 </body>
