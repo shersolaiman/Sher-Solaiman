@@ -1124,6 +1124,17 @@ header:before,header:after,header .w-9:after{content:none!important;display:none
     if(window.dHeroImage)settings.heroImage=window.dHeroImage;
     return settings;
   }
+  function sanitizeSettings(input){
+    const safe={};
+    Object.keys(input||{}).forEach(key=>{
+      const value=input[key];
+      if(value===undefined||typeof value==='function')return;
+      if((key==='heroImage'||key==='logoImage')&&typeof value==='string'&&value.indexOf('data:')===0)return;
+      if(typeof value==='string'&&value.length>900000)return;
+      safe[key]=value;
+    });
+    return safe;
+  }
   function applySettings(settings){
     saveLocal(settings);
     const brand=document.getElementById('headerBrandText');
@@ -1166,16 +1177,17 @@ header:before,header:after,header .w-9:after{content:none!important;display:none
     }catch(_){if(error){error.textContent='Invalid Firebase email or password.';error.classList.remove('hidden');}}
   };
   window.saveDashSite=async function(){
-    if(!currentUser||currentUser.email!==ADMIN_EMAIL){openLogin();return;}
-    const settings=collectSettings();
+    if(!currentUser||String(currentUser.email||'').toLowerCase()!==ADMIN_EMAIL.toLowerCase()){openLogin();return;}
+    const settings=sanitizeSettings(collectSettings());
     try{
       await db.collection(SETTINGS_COLLECTION).doc(SETTINGS_DOCUMENT).set(settings,{merge:true});
       applySettings(settings);
       const toast=document.createElement('div');toast.textContent='Homepage changes saved for all visitors';toast.style.cssText='position:fixed;right:18px;bottom:18px;z-index:9999;padding:12px 16px;background:#10284d;color:#fff;border-radius:10px;font:600 13px Arial;';document.body.appendChild(toast);setTimeout(()=>toast.remove(),2600);
-    }catch(error){alert('Save failed. Check Firebase Rules and your Admin login.');console.error(error);}
+    }catch(error){alert('Save failed ('+(error.code||'unknown')+'). Check Firebase Rules and your Admin login.');console.error('Firebase Save failed',error);}
   };
   window.adminLogout=async function(){await auth.signOut();localStorage.removeItem('firebaseAdminRemembered');if(typeof closeDashboard==='function')closeDashboard();};
-  auth.onAuthStateChanged(user=>{currentUser=user;if(user&&user.email===ADMIN_EMAIL)loadSharedSettings();});
+  auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).catch(()=>{});
+  auth.onAuthStateChanged(user=>{currentUser=user;if(user&&String(user.email||'').toLowerCase()===ADMIN_EMAIL.toLowerCase())loadSharedSettings();});
   document.addEventListener('DOMContentLoaded',loadSharedSettings);
   window.addEventListener('focus',loadSharedSettings);
 })();
