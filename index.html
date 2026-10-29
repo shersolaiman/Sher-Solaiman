@@ -151,6 +151,7 @@ footer .ft{color:#9fb3a4;font-size:14px}
 .art h1{font-size:clamp(26px,4vw,38px);line-height:1.2;margin:12px 0 16px;color:#000}
 .lang{display:flex;gap:8px;margin-bottom:10px}.lang button{padding:7px 14px;border-radius:10px;background:#edf2ee;font-size:12px;font-weight:700}.lang button[aria-pressed=true]{background:var(--brand);color:#fff}
 .prose,.prose h4,.prose p,.prose li{color:#000}.prose h4{font-weight:800;margin-top:1.5em}.prose p{margin-top:.95em;line-height:1.95}.prose ul{padding-left:1.4em;margin-top:.9em}.prose li{margin-top:.4em;line-height:1.8}.prose .pt{border-left:3px solid #b5d3bd;padding-left:12px}
+.soon{text-align:center;padding:56px 12px 40px}.soon-big{font:700 clamp(44px,12vw,84px)/1.05 'Playfair Display',Georgia,serif;color:var(--brand);letter-spacing:-.02em}.prose .soon p{margin-top:14px;color:var(--mut);font-size:15px;line-height:1.6}
 .empty{background:#fff;border:1px dashed #b9d1be;border-radius:var(--r);padding:40px 24px;text-align:center;color:var(--mut);grid-column:1/-1}
 .thanks{position:fixed;inset:0;z-index:400;display:grid;place-items:center;background:rgba(10,18,12,.35);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .25s}.thanks.on{opacity:1}
 .thanks div{background:#fff;border-radius:28px;padding:34px 44px;text-align:center;transform:scale(.9);transition:.3s cubic-bezier(.34,1.56,.64,1);box-shadow:0 30px 70px rgba(10,18,12,.3)}.thanks.on div{transform:none}
@@ -332,7 +333,7 @@ const SITE = {
     title: 'Every kind of skincare writing, *in one place.*',
   },
 
-  featuredCount: 4,                    // হোমপেজে Selected writing-এ সর্বোচ্চ কয়টা লেখা দেখাবে
+  featuredCount: 6,                    // হোমপেজে Selected writing-এ সর্বোচ্চ কয়টা লেখা দেখাবে
   work: {
     kicker: '02 — Recently written',
     title: 'Real skin questions. *Clearer answers.*',
@@ -453,6 +454,7 @@ const ALL_TILE = ['All Samples', 'fa-layer-group', '#0a120c'];   // শেষ �
           titleEn   → ইংরেজি শিরোনাম (কার্ডে দেখায়)
           titleBn   → বাংলা শিরোনাম
           tags      → হ্যাশট্যাগ (না চাইলে [] রাখুন)
+          enLive    → ইংরেজি এখন বন্ধ (false): English বাটনে বড় করে "Coming soon" দেখায়। ইংরেজি লেখা তৈরি হলে en-এ বসিয়ে enLive: true করুন।
           bn        → বাংলা লেখা   |   en → ইংরেজি লেখা (না থাকলে খালি `` রাখুন, তখন English বাটন আসবে না)
        ৩) লেখার ফরম্যাট (` ` চিহ্নের ভেতরে):
           • নতুন অনুচ্ছেদ     → মাঝে একটা ফাঁকা লাইন রাখুন
@@ -466,9 +468,273 @@ const ALL_TILE = ['All Samples', 'fa-layer-group', '#0a120c'];   // শেষ �
 <script>
 const ARTICLES = [
   {
+    id: 'niacinamide-most-effective',
+    cats: ['Article', 'Ingredient Guides'],
+    featured: false,
+    enLive: false,   // true করলে ইংরেজি লেখা দেখাবে; false হলে English বাটনে \"Coming soon\" দেখাবে
+    titleEn: `Why Niacinamide Is Still the Most Effective Skincare Ingredient`,
+    titleBn: `স্কিনকেয়ারে কেন এখনও সবচেয়ে কার্যকরী উপাদান নিয়াসিনামাইড`,
+    tags: [],
+    bn: `
+
+স্কিনকেয়ারের জগতে প্রতি বছর নতুন নতুন উপাদান ট্রেন্ডে আসে, আবার হারিয়েও যায়।  কিন্তু এমন একটি উপাদান আছে যা দীর্ঘদিন ধরে স্কিনকেয়ারপ্রেমীদের আগ্রহ ধরে রেখেছে। সেটি হলো নিয়াসিনামাইড (Niacinamide)। সিরাম থেকে ময়েশ্চারাইজার। এমনকি কিছু ক্লিনজারেও এই উপাদান পাওয়া যায়। তৈলাক্ত ত্বক থেকে শুরু করে অসমান ত্বকের রং নিয়ে চিন্তিত মানুষের স্কিনকেয়ার রুটিনেও এটি জায়গা করে নিয়েছে।
+
+তবে নিয়াসিনামাইড কি সত্যিই এতটা কার্যকর? নাকি এটি কেবল ট্রেন্ডি একটি স্কিনকেয়ার উপাদান? উত্তরটি বুঝতে হলে এর প্রকৃত কার্যকারিতা এবং বৈজ্ঞানিক প্রমাণের দিকে নজর দিতে হবে।
+
+## নিয়াসিনামাইড আসলে কী?
+
+নিয়াসিনামাইড হলো ভিটামিন বি৩-এর একটি রূপ। একে নিকোটিনামাইডও বলা হয়। ত্বকের কোষের শক্তি উৎপাদন ও মেরামত প্রক্রিয়ায় এটি ভূমিকা রাখে। পানিতে সহজে মিশে যায় বলে সিরাম, টোনার, ময়েশ্চারাইজার, প্রায় সব ধরনের প্রোডাক্টেই এটি ব্যবহার করা হয়।
+
+গবেষণায় এটিকে anti-inflammatory, antioxidant এবং barrier-strengthening বৈশিষ্ট্যের কারণে অ্যাকনি, রোসাসিয়া, হাইপারপিগমেন্টেশন ও বয়সজনিত পরিবর্তনে কার্যকর বলা হয়েছে।
+
+## নিয়াসিনামাইড কীভাবে কাজ করে?
+
+নিয়াসিনামাইড কেন এত চমৎকার কাজ করে, তা বুঝতে হলে ত্বকের একদম ভেতরের কোষীয় প্রক্রিয়ার দিকে নজর দিতে হবে। নিয়াসিনামাইড শরীরে দুটি অত্যন্ত গুরুত্বপূর্ণ কো-এনজাইম তৈরিতে সাহায্য করে: নিকোটিনামাইড এডেনিন ডাইনিউক্লিওটাইড (NAD+) এবং নিকোটিনামাইড এডেনিন ডাইনিউক্লিওটাইড ফসফেট (NADP+)।
+
+এই কো-এনজাইমগুলো ত্বকের কোষের শক্তির উৎস হিসেবে কাজ করে। বয়স বাড়ার সাথে সাথে কিংবা সূর্যের ক্ষতিকর অতিবেগুনি রশ্মি ও পরিবেশগত দূষণের কারণে ত্বকে NAD+-এর মাত্রা কমতে থাকে। নিয়াসিনামাইড নিয়মিত ব্যবহারে কোষে এই শক্তির অভাব দূর হয়, যার ফলে কোষের প্রাকৃতিক মেরামত প্রক্রিয়া দ্রুত হয়, নতুন লিপিড তৈরি হয় এবং ত্বকের ভেতরের কোলাজেন নষ্ট হওয়া রোধ হয়।
+
+অন্যান্য উপাদানের মতো এটি শুধু ত্বকের ওপরের সাময়িক সৌন্দর্য বৃদ্ধি করে না, বরং ত্বকের ভেতরের মূল জৈবিক কাজগুলোকে স্বাভাবিক রাখতে সরাসরি ভূমিকা রাখে।
+
+## একটি উপাদান, একাধিক কাজ
+
+স্কিনকেয়ারে সাধারণত একটি উপাদান একটি সমস্যার জন্য। নিয়াসিনামাইড এখানে ব্যতিক্রম। চলুন একে একে দেখি, গবেষণা আসলে কী বলে।
+
+## ১. তেল নিয়ন্ত্রণ ও ওপেন পোরস
+
+অতিরিক্ত সেবাম বা তেল নিঃসরণের কারণে ত্বকে ব্রণ হয় এবং রোমকূপ বা পোরস বড় দেখায়। অনেক স্কিনকেয়ার উপাদান ত্বকের তেল কমাতে গিয়ে ত্বককে অতিমাত্রায় শুষ্ক করে ফেলে। এর ফলে ত্বক নিজের আর্দ্রতা বাঁচাতে আরও বেশি তেল তৈরি করতে শুরু করে।
+
+নিয়াসিনামাইডের কাজ করার পদ্ধতি ভিন্ন। এটি ত্বকের আর্দ্রতা না কমিয়ে সরাসরি সেবেসিয়াস গ্ল্যান্ড বা তেল গ্রন্থির অতিরিক্ত উৎপাদন নিয়ন্ত্রণ করে। ক্লিনিক্যাল গবেষণায় দেখা গেছে, ২% থেকে ৫% ঘনত্বের নিয়াসিনামাইড ৪ থেকে ৮ সপ্তাহ ব্যবহারে ত্বকের সেবাম উৎপাদন উল্লেখযোগ্যভাবে কমে আসে। সেবাম প্রবাহ স্বাভাবিক হলে বড় হয়ে যাওয়া রোমকূপগুলোও ধীরে ধীরে সংকুচিত হয়ে ত্বকের টেক্সচার মসৃণ করে।
+
+## ২. ব্রণ কমাতে সহযোগিতা করে।
+
+এটিকে সরাসরি ব্রণের চকিৎসা বলা না হলেও ২০১৭ সালের একটি রিভিউয়ে দেখা গেছে, নিয়াসিনামাইডের ওপর হওয়া ৮টি টপিক্যাল গবেষণার মধ্যে ৬টিতে ব্রণ উল্লেখযোগ্যভাবে কমেছে। ৫% নিয়াসিনামাইড জেল নিয়ে করা গবেষণাতেও ব্রণের উন্নতি দেখা যায়। এর পেছনে কারণ দুটি: এটি তেল নিয়ন্ত্রণে রাখে এবং এর প্রদাহ-বিরোধী গুণ আছে, ফলে ব্রণের লালচে ভাবও কমে। তবে সত্যি কথা হলো, হালকা থেকে মাঝারি ব্রণে এটি দারুণ সহায়ক, কিন্তু গুরুতর বা সিস্টিক ব্রণের চিকিৎসা এটি দিয়ে হয় না।
+
+## ৩. কালচে দাগ ও আনইভেন স্কিন টোন দূর করে উজ্জ্বল করে।
+
+একনে স্পট বা ব্রণের দাগ, রোদে পোড়া দাগ এবং মেছতা দূর করা সহজ কাজ নয়। অধিকাংশ ব্রাইটেনিং উপাদান মেলানিন তৈরির এনজাইম টাইরোসিনেজকে আটকানোর চেষ্টা করে। এখানেই নিয়াসিনামাইডের কাজটা সবচেয়ে মজার। এটি মেলানিনের এই স্থানান্তর প্রায় ৬৮% পর্যন্ত আটকে দেওয়ার ফলে ত্বকের ওপরের স্তরে কালো দাগ ফুটতে পারে না এবং ত্বক ভেতর থেকে উজ্জ্বল ও সমবর্ণের দেখায়। ৪–৫% শক্তিতে ৮ থেকে ১২ সপ্তাহ নিয়মিত ব্যবহারে হাইপারপিগমেন্টেশন, ত্বকের হলদেটে ভাব ও লালচে ছোপ কমার প্রমাণ পাওয়া গেছে।
+
+তবে এ ক্ষেত্রে সানস্ক্রিনও অত্যন্ত গুরুত্বপূর্ণ। সূর্যের অতিবেগুনি রশ্মির সংস্পর্শে বিদ্যমান কালচে দাগ আরও স্পষ্ট হতে পারে। তাই দাগ কমানোর রুটিনে নিয়াসিনামাইড ব্যবহার করলেও দিনের বেলায় উপযুক্ত সানস্ক্রিন ব্যবহার করা উচিত।
+
+## ৪. স্কিন বারিয়ার রক্ষা
+
+ত্বকের প্রতিরক্ষামূলক স্তর বা বারিয়ার দুর্বল হয়ে পড়লে ত্বকের ভেতরে থাকা পানি দ্রুত শুকিয়ে যায় (TEWL), ফলে ত্বক সংবেদনশীল হয়ে পড়ে এবং সহজে র্যাশ বা লালচে ভাব দেখা দেয়। নিয়াসিনামাইড ত্বকের প্রাকৃতিক লিপিড বা চর্বি উপাদান; বিশেষ করে সেরামাইড, ফ্রি ফ্যাটি এসিড এবং কোলেস্টেরল উৎপাদনে সরাসরি উদ্দীপনা যোগায়।
+
+সেরামাইডের পরিমাণ বাড়লে ত্বকের কোষগুলো একে অপরের সাথে শক্ত বন্ধনে যুক্ত থাকে। এতে ত্বকের ভেতরের আর্দ্রতা ভেতরেই আটকে থাকে এবং বাইরের ব্যাকটেরিয়া বা দূষণ ত্বকের ক্ষতি করতে পারে না।
+
+## ৫. বয়সের ছাপ কমানো
+
+নিয়মিত ব্যবহারে ত্বকের হলদেটে ভাব, বলিরেখা, লালচে দাগ ও অমসৃণ ভাব কমতে দেখা গেছে। কিছু গবেষণা আবার ইঙ্গিত দেয়, বারবার UV-এর সংস্পর্শে আসা ত্বকের DNA ক্ষতি ঠেকাতেও এটি সহায়ক হতে পারে। তবে এখানে একটি স্পষ্ট সীমারেখা টানা দরকার: নিয়াসিনামাইড কখনোই সানস্ক্রিনের বিকল্প নয়।
+
+## কত শতাংশ নিয়াসিনামাইড ব্যবহার করা উচিত?
+
+এর উপকারিতা অনেক হলেও বর্তমানে বাজারে উচ্চ ঘনত্বের বা পার্সেন্টেজের (যেমন ১০%, ১৫% বা ২০%) নিয়াসিনামাইড সেরামের এক ধরনের প্রতিযোগিতা দেখা যাচ্ছে।
+
+তবে নিয়াসিনামাইড সাধারণত ২% থেকে ১০% ঘনত্বে নিরাপদ এবং কার্যকর।  তবে উপযুক্ত ঘনত্ব নির্ভর করে পণ্যের ফর্মুলেশন এবং ব্যক্তির ত্বকের প্রয়োজনের ওপর। তবে প্রথমবার কম ঘনত্ব দিয়ে শুরু করাই ভালো। ধীরে ধীরে ঘনত্বের পরিমাণ বাড়াতে পারেন।
+
+## ভিটামিন সি আর নিয়াসিনামাইড কি একসঙ্গে চলে?
+
+একসময় প্রচার ছিল, এই দুটি একসঙ্গে ব্যবহার করলে একে অপরকে নষ্ট করে দেয়। এই ধারণার উৎস পুরোনো একটি পরীক্ষা, যেখানে অস্বাভাবিক উচ্চ তাপমাত্রা ও আলাদা পরিবেশে দুটিকে মেশানো হয়েছিল। আধুনিক ফর্মুলেশনে এই সমস্যা সাধারণত দেখা যায় না, আর অনেক ব্র্যান্ড দুটিকে একই প্রোডাক্টে ব্যবহারও করে। তবে ত্বক খুব সংবেদনশীল হলে নিরাপদ পথ হলো সকালে ভিটামিন সি, রাতে নিয়াসিনামাইড।
+
+আরেকটা মজার বিষয় হলো নিয়াসিনামাইড প্রায় সব ধরনের স্কিনকেয়ার উপাদানের সাথে মানিয়ে নিতে পারে এবং ত্বকে সহজে কোনো পার্শ্বপ্রতিক্রিয়া সৃষ্টি করে না।
+
+## ব্যবহারের সহজ নিয়ম
+
+- ক্লিনজার দিয়ে মুখ ভালোভাবে পরিষ্কার করুন
+- পরিষ্কার মুখে সিরাম লাগান, তারপর ময়েশ্চারাইজার।
+- সকাল ও রাত, দুই বেলাতেই ব্যবহার করা যায়।
+- নতুন প্রোডাক্ট হলে প্রথমে কানের পেছনে বা কবজিতে প্যাচ টেস্ট করুন।
+- ফল দেখতে অন্তত ৮ থেকে ১২ সপ্তাহ সময় দিন।
+- দিনের বেলা সানস্ক্রিন ভুলবেন না।
+
+## শেষ কথা
+
+স্কিনকেয়ারের জগতে অনেক ট্রেন্ড আসবে এবং চলেও যাবে, কিন্তু কয়েক দশকের গবেষণায় প্রমাণিত নিয়াসিনামাইডের কার্যকারিতা অপরিবর্তনীয়। তবে নিয়াসিনামাইড আপনাকে রাতারাতি গ্লাস স্কিন দেবে না, আর কোনো বিশ্বাসযোগ্য উপাদানই তা দেয় না। নিয়াসিনামাইডের সবচেয়ে ভালো দিক হলো এর বহুমুখিতা এবং এর পার্শ্বপ্রতিক্রিয়ার ঝুঁকি অত্যন্ত কম। এই কারণেই ডার্মাটোলজিস্ট এবং স্কিনকেয়ার বিশেষজ্ঞরা একে ‘সবচেয়ে নির্ভরযোগ্য উপাদান’ হিসেবে গণ্য করেন। ত্বকের যত্নে যদি একটি উপাদান বেছে নিতে হয়, যা প্রায় সবার জন্য উপযুক্ত এবং দীর্ঘমেয়াদে ফল দেয়; নিয়াসিনামাইড তার মধ্যে অন্যতম।
+`,
+    en: ``,
+  },
+  {
+    id: 'ceramides-skin-barrier',
+    cats: ['Article', 'Ingredient Guides'],
+    featured: false,
+    enLive: false,   // true করলে ইংরেজি লেখা দেখাবে; false হলে English বাটনে \"Coming soon\" দেখাবে
+    titleEn: `Ceramides: The Key Ingredient of a Healthy Skin Barrier`,
+    titleBn: `সেরামাইডস: স্বাস্থ্যকর স্কিন বারিয়ারের মূল উপাদান`,
+    tags: [],
+    bn: `
+আজকের স্কিনকেয়ারের দুনিয়ায় আমরা প্রায়শই কেমিক্যাল পিলিং, শক্তিশালী এসিড কিংবা দ্রুত ফলদায়ক উপাদানের দিকে বেশি ঝুঁকে পড়ি। কিন্তু অনেকেই ভুলে যান যে, ত্বকের আসল সৌন্দর্য এবং সুস্থতা নির্ভর করে একটি মজবুত ভিত্তির ওপর। ভিত্তিটি যদি নড়বড়ে হয়, তবে হাজারও দামি সিরাম কিংবা ট্রিটমেন্ট কোনো কাজেই আসে না। ত্বকের এই প্রাকৃতিক সুরক্ষা বা বারিয়ারের সবচেয়ে গুরুত্বপূর্ণ ও মূল উপাদান হলো সেরামাইডস (Ceramides)।
+
+সহজ ভাষায় বলতে গেলে, সেরামাইডস হলো আমাদের ত্বকের সেই অদৃশ্য শক্তি, যা ত্বককে বাইরের ধুলোবালি, ব্যাকটেরিয়া ও দূষণ থেকে রক্ষা করে এবং ভেতরের আর্দ্রতা ভেতরেই আটকে রাখে। আসুন বিস্তারিত জেনে নেওয়া যাক, কেন সেরামাইডকে বলা হয় সুস্থ স্কিন বারিয়ারের আসল ভিত্তি।
+
+## 'ইট ও সিমেন্ট' মডেল: সেরামাইড কীভাবে কাজ করে?
+
+ত্বকের সবচেয়ে উপরের স্তরে কর্নিওসাইট নামক মৃত কোষগুলোর মাঝখানে এরা কোলেস্টেরল এবং ফ্যাটি অ্যাসিডের সাথে মিলে একটা সুসংগঠিত স্তর তৈরি করে। এই স্তরকে বলা হয় লিপিড ল্যামেলা। এটা অনেকটা ইটের দেয়ালের মসলার মতো কাজ করে। ইটগুলো হলো কর্নিওসাইট, আর মসলা হলো সিরামাইডসহ অন্যান্য লিপিড। এই মসলা যদি কম হয় বা এর গঠন নষ্ট হয়, তাহলে দেয়ালে ফাটল ধরে। পানি বেরিয়ে যায়, আর বাইরের ধুলো, ব্যাকটেরিয়া, অ্যালার্জেন সহজে ঢুকে পড়ে।
+
+সেরামাইড যদি পর্যাপ্ত পরিমাণে থাকে, তবে ত্বকের ওপর একটি প্রতিরোধক দেয়াল তৈরি হয়। এটি একদিকে যেমন বাইরের ক্ষতিকর জীবাণু ও কেমিক্যালকে ভেতরে ঢুকতে দেয় না, অন্যদিকে ত্বকের ভেতরের পানি শুকিয়ে যাওয়া অর্থাৎ ট্রান্স-এপিডার্মাল ওয়াটার লস (TEWL) রোধ করে।
+
+## ৩:১:১ অনুপাতের গল্প
+
+ত্বকের নিজস্ব লিপিডের ভারসাম্য নিয়ে ড. পিটার এলিয়াস ও তাঁর সহকর্মীদের বহু বছরের গবেষণা আছে। তাঁদের কাজের উপর ভিত্তি করে পরিচিত হয়েছে ৩:১:১ অনুপাত (সিরামাইড : কোলেস্টেরল : ফ্রি ফ্যাটি অ্যাসিড)। কিছু গবেষণায় দেখা গেছে, তিনটি উপাদান একসঙ্গে রাখলে ব্যারিয়ার রিকভারি দ্রুত হয়, যেখানে শুধু একটি উপাদান দিলে তা ততটা হয় না। অনুপাতটি কতটা সুনির্দিষ্ট, তা নিয়ে গবেষকদের মধ্যে এখনো আলোচনা আছে, কেউ ৩:১:১, কেউ ১:১:১ বলেন। তবে সবাই যেটায় একমত, তা হলো, কেবল সিরামাইড নয়, তিনটি লিপিডই গুরুত্বপূর্ণ।
+
+## কেন ত্বকে সেরামাইডের ঘাটতি তৈরি হয়?
+
+জন্মগতভাবে প্রতিটি মানুষের ত্বকের কোষে প্রাকৃতিকভাবেই পর্যাপ্ত পরিমাণে সেরামাইড উপস্থিত থাকে, যা শৈশব ও কৈশোরে ত্বককে রাখে সতেজ, কোমল এবং আর্দ্র। কিন্তু বয়স বৃদ্ধির সাথে সাথে প্রাকৃতিকভাবেই ত্বকে সেরামাইড উৎপাদনের হার কমে যায়। তবে শুধু বয়স নয়, আমাদের স্কিনকেয়ার রুটিনের ভুল নির্বাচনও সেরামাইডের ঘাটতির জন্য বড় দায়ী।
+
+কড়া ফেসওয়াশ বারবার ব্যবহার, অ্যালকোহলযুক্ত টোনার, তীব্র স্ক্রাবিং এবং না বুঝে উচ্চমাত্রার কেমিক্যাল এসিড বা রেটিনয়েড ব্যবহারের ফলে ত্বকের প্রতিরক্ষামূলক সেরামাইড স্তর দ্রুত ক্ষয়ে যায়। এছাড়া আমাদের লোকাল বাজারে 'নাইট ক্রিম', 'স্পট আউট ক্রিম' বা 'হালকা ফর্সাকারী ক্রিম' নামে যেসব আনব্র্যান্ডেড বা নিম্নমানের ক্রিম পাওয়া যায়, সেগুলোও দায়ী। একই সাথে রোদের ক্ষতিকর অতিবেগুনি রশ্মি, শুষ্ক আবহাওয়া, পুষ্টিকর ফ্যাটি এসিডের অভাব এবং অতিরিক্ত মানসিক চাপও ত্বকে সেরামাইডের ঘাটতি তৈরির অন্যতম প্রধান কারণ।
+
+## সেরামাইডের ঘাটতি হলে ত্বকে কী কী সমস্যা দেখা দেয়?
+
+ত্বকে সেরামাইডের অভাব দেখা দিলে কেবল ত্বক শুষ্কই হয় না, বরং একাধিক জটিল সমস্যা তৈরি হয়:
+
+- ত্বক যতই ময়েশ্চারাইজ করা হোক না কেন, কিছুক্ষণ পরই আবার শুষ্ক হয়ে যায়।
+- অল্প রোদ বা বাতাসেও ত্বক জ্বালাপোড়া করে বা লাল হয়ে যায়।
+- আর্দ্রতার অভাবে ত্বক স্থিতিস্থাপকতা বা ইলাস্টিসিটি হারিয়ে ফেলে, ফলে কম বয়সেই চামড়া কুচকে যায়। বয়সের ছাপ পড়ে যায়।
+- বারিয়ার দুর্বল হয়ে পড়লে সহজেই ব্যাকটেরিয়া ভেতরে প্রবেশ করে প্রদাহ তৈরি করে, যা ব্রণ ও একজিমার প্রধান কারণ।
+
+## স্কিনকেয়ারে সেরামাইডের সঠিক প্রয়োগ ও উপাদান নির্বাচন
+
+সেরামাইড যুক্ত ময়েশ্চারাইজার বা সেরাম বাজারে প্রচুর পাওয়া যায়। তবে সর্বোচ্চ সুবিধা পেতে কিছু বিষয় মাথায় রাখা প্রয়োজন:
+
+## ক. 'গোল্ডেন লিপিড রেশিও' (Golden Lipid Ratio)
+
+গবেষণায় দেখা গেছে, সেরামাইড একাকী কাজ করার চেয়ে যখন ৩:১:১ অনুপাতে (৩ ভাগ সেরামাইড, ১ ভাগ কোলেস্টেরল এবং ১ ভাগ ফ্রি ফ্যাটি এসিড) ফর্মুলেট করা হয়, তখন এটি সবচেয়ে দ্রুত ক্ষতিগ্রস্ত বারিয়ার মেরামত করতে পারে। তাই সেরামাইড প্রোডাক্ট কেনার সময় উপাদানের তালিকায় এই তিনটি লিপিডের উপস্থিতি দেখে নেওয়া ভালো।
+
+## খ. বায়ো-আইডেন্টিক্যাল সেরামাইডস
+
+প্রোডাক্টের ইনগ্রেডিয়েন্ট লিস্টে Ceramide AP, Ceramide EOP, Ceramide NP, বা Ceramide NS—এই নামগুলো দেখলে বুঝবেন এগুলো ত্বকের প্রাকৃতিক সেরামাইডের সাথে শতভাগ মিলে যায় এবং ত্বকে দ্রুত শোষিত হয়।
+
+## অন্যান্য একটিভসের সাথে সেরামাইড
+
+সেরামাইডের সবচেয়ে সুন্দর দিক হলো এটি কোনো সক্রিয় উপাদান বা একটিভসের সাথে সংঘাত তৈরি করে না।
+
+রেটিনয়েডের সাথে: রেটিনয়েডের পাশ্বপ্রতিক্রিয়া (যেমন চামড়া ওঠা বা জ্বালাপোড়া) কমাতে সেরামাইড ঢাল হিসেবে কাজ করে।
+
+নিয়াসিনামাইডের সাথে: গবেষণায় দেখা গেছে, নিয়াসিনামাইড ত্বকে সিরামাইডসহ অন্য লিপিড তৈরিতে সাহায্য করে । অর্থাৎ একজন কাজ করে দেয়াল তৈরির উপাদান তৈরিতে, আরেকজন সেই উপাদানই সরাসরি যোগান দেয়।
+
+হায়ালুরোনিক এসিডের সাথে: হায়ালুরোনিক এসিড ত্বকে পানি টেনে আনে, আর সেরামাইড সেই পানিকে লক করে দেয়।
+
+## শেষ কথা
+
+অতএব নতুন প্রোডাক্ট ব্যবহার করার আগে ভালোভাবে যাচাই করেই এপ্লাই করুন। স্বাস্থ্যকর খাবার খান। এবং স্কিন টাইপ অনুযায়ী প্যাচ টেস্ট করে প্রোডাক্ট ব্যবহার করুন। স্কিন ব্যারিয়ার ঠিক থাকলে তবেই অ্যাক্টিভ ইনগ্রিডিয়েন্স ভালো কাজ করে, আর ব্যারিয়ার দুর্বল হলে সবচেয়ে দামি সিরামও ত্বককে স্বস্তি দিতে পারে না। তাই আগে ব্যারিয়ার, তারপর সব কিছু।
+`,
+    en: ``,
+  },
+  {
+    id: 'innsaei-salicylic-foam-1',
+    cats: ['Video Script'],
+    featured: false,
+    enLive: false,   // true করলে ইংরেজি লেখা দেখাবে; false হলে English বাটনে \"Coming soon\" দেখাবে
+    titleEn: `Innsaei Salicylic Acid Acne Cleansing Foam 1`,
+    titleBn: `Innsaei Salicylic Acid Acne Cleansing Foam`,
+    tags: [],
+    bn: `
+ব্রণ, ব্ল্যাকহেডস আর অয়েলি স্কিনের সমস্যা নিয়ে ভেবে ভেবে দিশেহারা?
+
+প্রতিদিন অতিরিক্ত তেলতেলে ভাব, জেদি ব্ল্যাকহেডস আর ঘন ঘন নতুন ব্রণের উপদ্রব দূর করতে আর কত বিদেশি প্রোডাক্টের পেছনে হাজার হাজার টাকা খরচ করবেন?
+
+এবার দেশে বসেই পাচ্ছেন বাজেট-ফ্রেন্ডলি দামে বিশ্বমানের কোরিয়ান ফর্মুলেশনে তৈরি এক জাদুকরী সমাধান; Innsaei Salicylic Acid Acne Cleansing Foam (150ml)
+
+এই বিশেষ ফেসওয়াশটিতে রয়েছে ২% স্যালিসাইলিক অ্যাসিড, যা ত্বকের পোরসের একদম গভীরে প্রবেশ করে জমে থাকা অতিরিক্ত তেল, ধুলোবালি ও মৃত কোষ দূর করে ত্বককে ভেতর থেকে ডিপ ক্লিন করে। এটি বন্ধ হয়ে থাকা পোরস আনব্লগ করার মাধ্যমে জিদ্দি ব্ল্যাকহেডস কমায় এবং নতুন করে ব্রণ ওঠার উপদ্রব একেবারেই আটকে দেয়। সবচেয়ে দারুণ বিষয় হলো, এটি ত্বকের প্রয়োজনীয় প্রাকৃতিক আর্দ্রতা বজায় রেখেই মুখের চিপচিপে তেল ভাব দূর করে, যার ফলে আপনি পেয়ে যান সারাদিনের জন্য এক ফ্রেশ, ঝকঝকে ও প্রাণবন্ত গ্লো।
+`,
+    en: `
+Worried sick about acne, blackheads and oily skin?
+
+How many more imported products will you spend thousands of taka on, just to get rid of constant oiliness, stubborn blackheads and the endless cycle of new breakouts?
+
+Now, right here at home, you can get a magical solution made with world-class Korean formulation at a budget-friendly price: Innsaei Salicylic Acid Acne Cleansing Foam (150ml).
+
+This special face wash contains 2% salicylic acid, which goes deep into your pores to clear out excess oil, dust and dead skin cells, and deep-cleans your skin from within. By unclogging blocked pores, it reduces stubborn blackheads and stops new breakouts from showing up. Best of all, it removes that greasy feel while keeping your skin's essential natural moisture intact, so you enjoy a fresh, sparkling and vibrant glow all day long.
+`,
+  },
+  {
+    id: 'innsaei-salicylic-foam-2',
+    cats: ['Video Script'],
+    featured: true,
+    enLive: false,   // true করলে ইংরেজি লেখা দেখাবে; false হলে English বাটনে \"Coming soon\" দেখাবে
+    titleEn: `Innsaei Salicylic Acid Acne Cleansing Foam 2`,
+    titleBn: `Innsaei Salicylic Acid Acne Cleansing Foam`,
+    tags: [],
+    bn: `
+মাত্র ৪০০ টাকারও কম খরচে যদি মিলে যায় ব্রণ ও ব্ল্যাকহেডসের পারফেক্ট সমাধান, তবে কেন হাজার হাজার টাকা অপচয় করবেন?
+
+হ্যাঁ, ঠিকই শুনেছেন! দামি বিদেশি ব্র্যান্ডের পেছনে অহেতুক বাড়তি টাকা ঢালার দিন এখন শেষ। নামমাত্র বাজেটে প্রিমিয়াম কোয়ালিটির আসল ম্যাজিক নিয়ে এসেছে বাংলাদেশি স্কিন কেয়ার ব্র্যান্ড Innsaei।
+
+কথা বলছি Innsaei Salicylic Acid Acne Cleansing Foam (150ml) নিয়ে
+
+"মেড ইন বাংলাদেশ" শুনেই কিন্তু নাক ছিটকানি  যাওয়ার কোনো সুযোগ নেই। কারণ এই ক্লিনজারটি পুরোপুরি কোরিয়ান ফর্মুলেশনের সমন্বয়ে প্রস্তুত এবং সব ধরনের ত্বকে ব্যবহারের জন্য ডার্মাটোলজিস্ট দ্বারা পরীক্ষিত ও সম্পূর্ণ নিরাপদ। তাই মাত্র ৪০০ টাকারও কমে যখন পাচ্ছেন এমন প্রিমিয়াম কোয়ালিটি, তখন আর দামি বিদেশি ব্র্যান্ডের ওপর নির্ভর কেন করবেন? কোনো দ্বিধা ছাড়াই আপনার ত্বকের সুরক্ষায় আজই সংগ্রহ করুন Innsaei Salicylic Acid Acne Cleansing Foam ।
+`,
+    en: `
+If you can get the perfect solution for acne and blackheads for less than 400 taka, why waste thousands of taka?
+
+Yes, you heard it right! The days of pouring unnecessary extra money into expensive foreign brands are over. The Bangladeshi skincare brand Innsaei has brought the real magic of premium quality at a minimal budget.
+
+I'm talking about the Innsaei Salicylic Acid Acne Cleansing Foam (150ml).
+
+Please don't turn up your nose at "Made in Bangladesh." This cleanser is made entirely with Korean formulations and is dermatologist-tested and completely safe for all skin types. So when you can get this premium quality for less than 400 taka, why depend on expensive foreign brands? Without any hesitation, get your Innsaei Salicylic Acid Acne Cleansing Foam today to protect your skin.
+`,
+  },
+  {
+    id: 'innsaei-niacinamide-serum',
+    cats: ['Video Script'],
+    featured: false,
+    enLive: false,   // true করলে ইংরেজি লেখা দেখাবে; false হলে English বাটনে \"Coming soon\" দেখাবে
+    titleEn: `Innsaei 10% Niacinamide Serum (30 ml)`,
+    titleBn: `Innsaei 10% Niacinamide Serum (30 ml)`,
+    tags: [],
+    bn: `
+ব্রণের জেদি দাগ আর মেছতা কি কিছুতেই যাচ্ছে না? রোদে পোড়া কালচে ছোপ, ওপেন পোরস, নিস্তেজ ত্বক, সবকিছু করেও কি ফল পাচ্ছেন না?
+
+সত্যি কথা হলো, শুধু বেসিক স্কিনকেয়ারে এই সমস্যাগুলো যায় না। কারণ এগুলো ত্বকের অনেক গভীরে থাকে, আর সেখানে পৌঁছানোর ক্ষমতা রাখে শুধু পাওয়ারফুল অ্যাক্টিভ উপাদান।
+
+সেই সমাধানই এনেছে Innsaei 10% Niacinamide Serum । এই সিরামে আছে ১০% নিয়াসিনামাইড, সাথে Hyaluronic Acid ও Allantoin। এই তিনের কম্বিনেশন আপনার ত্বক থেকে দূর করবে ব্রণের দাগ, মেছতা ও সানট্যানের কালচে ছোপ। মিনিমাইজ করবে বড় হয়ে যাওয়া ওপেন পোরস এবং ত্বককে করে তোলে মসৃণ ও সিল্কি । এছাড়াও অয়েল ব্যালেন্সও ঠিক রাখে। সবমিলিয়ে এই সিরিয়ামটি আপনার ত্বককে দিবে ভেতর থেকে  স্পটলেস, হেলদি ও ক্রিস্টাল ক্লিয়ার গ্লো।
+
+তাহলে আর দেরি কেন? দুশ্চিন্তা আর যেনতেন নাইটক্রিমে ত্বক নষ্ট করা বন্ধ করুন। আজই আপনার ডেইলি স্কিনকেয়ার রুটিনে যোগ করুন Innsaei 10% Niacinamide Serum, আর ত্বককে দিন গ্লাসি, স্পটলেস লুক।
+`,
+    en: `
+Are stubborn acne marks and melasma refusing to go away? Sun-darkened patches, open pores, dull skin... and nothing seems to work?
+
+The truth is, basic skincare alone can't clear these problems. They sit deep in the skin, and only powerful active ingredients can reach that far.
+
+That is the solution Innsaei 10% Niacinamide Serum brings. This serum contains 10% niacinamide, along with hyaluronic acid and allantoin. Together, these three will clear acne marks, melasma and dark sun-tan patches from your skin, minimize enlarged open pores, and leave your skin smooth and silky. It also keeps your skin's oil balance in check. All in all, this serum gives your skin a spotless, healthy and crystal-clear glow from within.
+
+So why wait? Stop worrying, and stop damaging your skin with just any night cream. Add Innsaei 10% Niacinamide Serum to your daily skincare routine today and give your skin a glassy, spotless look.
+`,
+  },
+  {
+    id: 'skino-micellar-water',
+    cats: ['Video Script'],
+    featured: false,
+    enLive: false,   // true করলে ইংরেজি লেখা দেখাবে; false হলে English বাটনে \"Coming soon\" দেখাবে
+    titleEn: `skin'O Refreshing Micellar Cleansing Water (100 ml)`,
+    titleBn: `skin'O Refreshing Micellar Cleansing Water (100 ml)`,
+    tags: [],
+    bn: `
+সানস্ক্রিন, মেকআপ আর সারাদিনের ধুলাবালি  শুধুমাত্র ফেসওয়াশে দিয়ে পুরোপুরি পরিষ্কার না-ও হতে পারে। ফলে অবশিষ্ট ময়লা, তেল ও ডেড সেল লোমকূপে জমে ব্ল্যাকহেড, হোয়াইটহেড বা ব্রণের ঝুঁকি বাড়ায়।
+
+আর এজন্যই সহজ ডাবল ক্লেনজিং করার জাদুকরী সিক্রেট নিয়ে এসেছে skin'O Refreshing Micellar Cleansing Water।
+
+এতে থাকা অল্যানটোইন ও গ্লিসারিন ত্বকের আর্দ্রতা বজায় রেখে পোরসের ভেতর জমে থাকা তেল, দূষণ ও মৃত কোষ দূর করতে সাহায্য করে। মুখের ভারী মেকআপের পাশাপাশি চোখ ও ঠোঁটের ওয়াটারপ্রুফ মেকআপও এটি খুব সহজে তুলে ফেলে।
+
+কটন প্যাডে নিয়ে আলতো করে মুছুন, তারপর  আপনার উপযোগী ফেসওয়াশ দিয়ে মুখ ধুয়ে নিন, ব্যস, সম্পন্ন হলো ডাবল ক্লিনজিং।
+
+সব ধরনের ত্বকের জন্য উপযোগী এই মাইসেলার ওয়াটার। তাই ঝটপট ডিপ ক্লিনজিং আর ইনস্ট্যান্ট রিফ্রেশমেন্ট পেতে আজই সংগ্রহ করুন skin'O Refreshing Micellar Cleansing Water ।
+`,
+    en: `
+Sunscreen, makeup and a whole day's dust may not come off completely with a face wash alone. As a result, leftover dirt, oil and dead cells build up in your pores and raise the risk of blackheads, whiteheads or acne.
+
+That's why skin'O Refreshing Micellar Cleansing Water brings you the magical secret of easy double cleansing.
+
+The allantoin and glycerin in it help remove oil, pollution and dead cells that build up inside your pores while keeping the skin's moisture intact. Along with heavy face makeup, it also lifts waterproof eye and lip makeup very easily.
+
+Gently wipe with a cotton pad, then wash your face with a face wash that suits you. That's it, double cleansing is done.
+
+This micellar water is suitable for all skin types. So for quick deep cleansing and instant refreshment, get your skin'O Refreshing Micellar Cleansing Water today.
+`,
+  },
+  {
     id: 'niacinamide',
     cats: ['Ingredient Guides', 'Social Media Copy'],
     featured: true,
+    enLive: false,   // true করলে ইংরেজি লেখা দেখাবে; false হলে English বাটনে \"Coming soon\" দেখাবে
     titleEn: `Why Bangladesh Is Obsessed With Niacinamide`,
     titleBn: `বাংলাদেশে নিয়াসিনামাইড নিয়ে আমাদের চাহিদা এত বেশি কেন?`,
     tags: ['#Skincare', '#Niacinamide', '#BangladeshSkincare', '#SkincareEducation', '#Hyperpigmentation', '#AcneCare', '#SkinBarrier', '#SkincareScience'],
@@ -478,15 +744,10 @@ const ARTICLES = [
 না ঠিক আছে, নিয়াসিনামাইড ভালো তবে সমস্যা হলো আমরা Niacinamide-এর কাছে অনেক বেশি ফলাফল আশা করছি
 
 ফর্সা skin।
-
 Poreless skin।
-
 Acne-free skin।
-
 Oil-free skin।
-
 Dark spot-free skin।
-
 এক সপ্তাহে glow।
 
 আর ideally এসব এক serum দিয়েই।
@@ -495,7 +756,8 @@ Dark spot-free skin।
 
 এটি Vitamin B3-এর একটি form। এর মূল কাজ হলো পোর্স মিনিমাইজ করা এবং ত্বকের লালচে ভাব দূর করা। এর সাথে স্মুথ হেলদি একটা স্কিন পেতে পারেন। তবে Niacinamide দিয়েই স্কিনের সব সমস্যার সমাধান হবে এটা ভুল ধারণা। আমাদের নির্দিষ্ট সমস্যার জন্য নির্দিষ্ট ইনগ্রিডিয়েন্স যুক্ত প্রোডাক্ট বাছাই করতে হবে।
 
-হ্যাঁ, বাস্তবে Niacinamide একটি useful multitasking ingredient। কিন্তু সমস্যা হলো expectation। এটা কোনো Magic eraser না।
+হ্যাঁ, বাস্তবে Niacinamide একটি useful multitasking ingredient। কিন্তু সমস্যা হলো expectation। এটা কোনো Magic eraser না। 
+Niacinamide নিয়ে আমার একটি বিস্তারিত আর্টিকেল আছে। 
 `,
     en: ``,   // ইংরেজি সংস্করণ নেই
   },
@@ -503,6 +765,7 @@ Dark spot-free skin।
     id: 'kojie-san',
     cats: ['Ingredient Guides', 'Social Media Copy'],
     featured: true,
+    enLive: false,   // true করলে ইংরেজি লেখা দেখাবে; false হলে English বাটনে \"Coming soon\" দেখাবে
     titleEn: `Kojie San Soap: What Needs Clarifying`,
     titleBn: `Kojie San Soap নিয়ে যা পরিষ্কার হওয়া দরকার`,
     tags: ['#Skincare', '#KojieSan', '#KojicAcid', '#Hyperpigmentation', '#BodyCare', '#SkincareEducation', '#SkinHealth'],
@@ -601,6 +864,7 @@ Take basic skin care and then use the serum step by step. Now which serum to use
     id: 'three-step-routine',
     cats: ['Routine & Habits', 'Social Media Copy'],
     featured: true,
+    enLive: false,   // true করলে ইংরেজি লেখা দেখাবে; false হলে English বাটনে \"Coming soon\" দেখাবে
     titleEn: `Start Right: Skincare in Just 3 Steps`,
     titleBn: `হাজার হাজার টাকার ১০/১২ টি প্রোডাক্ট নয়।  সঠিক স্কিনকেয়ার শুরু করুন  মাত্র ৩টি ধাপে`,
     tags: ['#MinimalistSkincare', '#SkincareRoutine', '#DermatologyTips', '#SkinCareBasics', '#HealthySkinBarrier', '#SafeSkincare', '#SkinCareEducation'],
@@ -675,6 +939,7 @@ However, if there is an extra skin problem, then you have to take extra care onl
     id: 'moisturizer-oily-skin',
     cats: ['Routine & Habits', 'Social Media Copy'],
     featured: false,
+    enLive: false,   // true করলে ইংরেজি লেখা দেখাবে; false হলে English বাটনে \"Coming soon\" দেখাবে
     titleEn: `Why Oily Skin Still Needs Moisturizer`,
     titleBn: `তৈলাক্ত ত্বকেও কেন ময়েশ্চারাইজার দরকার`,
     tags: [],
@@ -713,6 +978,7 @@ So do not skip the moisturizer because of oily skin. Rather, follow the right sk
     id: 'acne-prone-skin',
     cats: ['Routine & Habits', 'Social Media Copy'],
     featured: false,
+    enLive: false,   // true করলে ইংরেজি লেখা দেখাবে; false হলে English বাটনে \"Coming soon\" দেখাবে
     titleEn: `People with acne-prone skin have a lot of sorrow`,
     titleBn: `Acne-prone skin-এর মানুষের অনেক দুঃখ।`,
     tags: [],
@@ -763,119 +1029,17 @@ Because no matter how annoying the acne looks. There is no guarantee that it wil
 If you see acne in the mirror, put your hand in your pocket. After a few days, acne will go away naturally.
 `,
   },
-  {
-    id: 'sunscreen-oily-skin',
-    cats: ['Routine & Habits', 'Article'],
-    featured: false,
-    titleEn: `Don’t Quit Sunscreen Because It Isn’t Perfect`,
-    titleBn: `পারফেক্ট না হলেও সানস্ক্রিন ছাড়বেন না`,
-    tags: [],
-    bn: `
-ধরুন আপনি Oily Skin-এর জন্য অনেক যাচাই বাছাই Sunscreen নিলেন। অনেক সানস্ক্রিন ট্রাই করলেন। হয়তো প্রোটেকশন পাচ্ছেন কিন্তু মুখ কালচে হওয়া বা হোয়াইট কাস্ট দেওয়া সমাধান হচ্ছে না।
-
-শেষে বিরক্ত হয়ে sunscreen-টাই বন্ধ করে দিলেন। এটা কোনো সমাধান নয়।
-
-বাইক চালানোর সময় হেলমেট পরলে মাথা ঘামে, চুল চ্যাপ্টা হয়ে লুকটাই হয়তো নষ্ট হয়। তাই বলে কি আপনি নিরাপত্তার কথা ভুলে হেলমেট পরা ছেড়ে দেন? নিশ্চয়ই না! কারণ আপনি ভালো করেই জানেন, সাময়িক হেয়ারস্টাইল নষ্ট হওয়ার চেয়ে জীবনের নিরাপত্তা বহু গুণ বেশি দামি।
-
-সানস্ক্রিন হলো আপনার ত্বকের জন্য সেই 'সুরক্ষা হেলমেট'।
-
-কারণ আপনার sunscreen perfect না হওয়ার কারণে সূর্যের UV radiation কিন্তু আপনার জন্য অপেক্ষা করবে না।
-
-আপনি sunscreen ব্যবহার করলেন কি না সেটা দেখে রোদ তার কাজ বন্ধ করবে না।
-
-তাই সানস্ক্রিন ছেড়ে দেওয়া কোনো সমাধান নয়।
-
-প্রতিদিনের UV exposure ধীরে ধীরে skin damage করতে পারে। Sun exposure pigmentation বাড়াতে পারে এবং দীর্ঘমেয়াদে premature skin aging-এর সঙ্গেও সম্পর্কিত। (aad.org)
-
-আর একটা বাস্তব কথা বলি।
-
-Skincare-এর সবকিছু সবসময় comfortable হবে এমন না।
-
-অনেকের কাছে sunscreen greasy লাগে।
-
-কারও white cast পছন্দ হয় না।
-
-কারও চোখে জ্বালা করে।
-
-কারও আবার মনে হয় sunscreen লাগালে মুখটাই নিজের মতো দেখায় না।
-
-এই সমস্যাগুলো imaginary না।
-
-কিন্তু এর সমাধান সবসময় sunscreen বাদ দেওয়া হতে পারে না।
-
-কারণ sunscreen-এর উপকারটা আপনি আয়নায় সঙ্গে সঙ্গে দেখতে পাবেন না।
-
-**বরং অনেক সময় এর সবচেয়ে বড় উপকার হলো—**
-
-যে damage হওয়ার কথা ছিল সেটা কম হওয়া।
-
-এটা একটু অদ্ভুত ব্যাপার।
-
-আজ sunscreen ব্যবহার করলেন।
-
-আজই হয়তো কোনো dramatic difference দেখতে পাবেন না।
-
-কিন্তু বছরের পর বছর sun exposure-এর cumulative effect কমানোর জন্য এই ছোট অভ্যাসটাই গুরুত্বপূর্ণ।
-
-**তাই আমি বলব না—**
-
-“যে sunscreen-ই হোক। কষ্ট হলেও লাগিয়ে যান।”
-
-না।
-
-যদি কোনো sunscreen আপনার skin-এ irritation করে বা ব্যবহার করাই অসম্ভব হয়ে যায় তাহলে সেটা আপনার জন্য ঠিক product নাও হতে পারে।
-
-কিন্তু একটা product ভালো না লাগাকে sunscreen পুরোপুরি ছেড়ে দেওয়ার কারণ বানাবেন না।
-
-একটা sunscreen আপনার জন্য কাজ না করলে অন্য formulation চেষ্টা করুন।
-
-Cream।
-
-Fluid।
-
-Gel।
-
-Tinted।
-
-Mineral।
-
-Chemical।
-
-Combination।
-
-আপনার skin এবং lifestyle-এর সঙ্গে যেটা সবচেয়ে ভালো মানিয়ে যায় সেটা খুঁজে নিন।
-
-আর যদি এখনো perfect sunscreen না পান?
-
-যতদিন না পান ততদিন shade খুঁজুন। ছাতা ব্যবহার করুন। টুপি পরুন। সরাসরি রোদ এড়িয়ে চলুন।
-
-কারণ sun protection শুধু sunscreen-এর ওপর নির্ভর করে না। (aad.org)
-
-তবে একটা জিনিস মনে রাখবেন।
-
-“আমার sunscreen ভালো লাগে না” আর “আমার sunscreen দরকার নেই”—এই দুটো কথা এক না।
-
-প্রথম সমস্যার সমাধান খুঁজে পাওয়া যায়।
-
-দ্বিতীয় ধারণাটা আপনাকেই দীর্ঘমেয়াদে ভোগাতে পারে।
-
-তাই perfect sunscreen-এর অপেক্ষায় sunscreen বাদ দেবেন না।
-
-আপনার skincare routine-এর সবচেয়ে glamorous step না হলেও sunscreen-এর জায়গাটা খুব গুরুত্বপূর্ণ।
-`,
-    en: ``,   // ইংরেজি সংস্করণ নেই
-  },
+ 
   {
     id: 'sunscreen-indoors',
     cats: ['Routine & Habits', 'Article'],
     featured: true,
+    enLive: false,   // true করলে ইংরেজি লেখা দেখাবে; false হলে English বাটনে \"Coming soon\" দেখাবে
     titleEn: `Do You Need Sunscreen Indoors?`,
-    titleBn: `বাসায় থাকলেও সানস্ক্রিন লাগাতে এটা কি স্রেফ স্কিনকেয়ার ইন্ডাস্ট্রির একটা স্ক্যাম?`,
+    titleBn: `বাসায় থাকলেও সানস্ক্রিন লাগাতে হবে?`,
     tags: [],
     bn: `
-## এই প্রশ্নের উত্তরটা এক কথায় "হ্যাঁ" বা "না" এর
-
-মাধ্যমে বলা যায় না। সূর্যের আলোয় দুই ধরনের ক্ষতিকর রশ্মি থাকে, UVB আর UVA। UVB হলো সেই রশ্মি যেটা রোদে পুড়িয়ে ট্যান বা সানবার্ন করে, আর ভালো খবর হলো সাধারণ জানালার কাঁচ এর বেশিরভাগই আটকে দেয়। কিন্তু UVA রশ্মি কাঁচ ভেদ করে অনায়াসে ঘরে ঢুকে পড়ে। সাধারণ জানালার কাঁচ দিয়ে ৫০% থেকে ৭০% পর্যন্ত UVA ভেতরে চলে আসতে পারে। এই UVA-ই আসল ভিলেন। এটা সরাসরি চামড়া তাৎক্ষণিক তেমন কিছু ফিল করায় না; তাই আমরা টেরই পাই না ক্ষতি হচ্ছে। কিন্তু এটাই বলিরেখা, বয়সের ছাপ আর দাগছোপের প্রধান কারণ।
+ এই প্রশ্নের উত্তরটা এক কথায় "হ্যাঁ" বা "না" এর মাধ্যমে বলা যায় না। সূর্যের আলোয় দুই ধরনের ক্ষতিকর রশ্মি থাকে, UVB আর UVA। UVB হলো সেই রশ্মি যেটা রোদে পুড়িয়ে ট্যান বা সানবার্ন করে, আর ভালো খবর হলো সাধারণ জানালার কাঁচ এর বেশিরভাগই আটকে দেয়। কিন্তু UVA রশ্মি কাঁচ ভেদ করে অনায়াসে ঘরে ঢুকে পড়ে। সাধারণ জানালার কাঁচ দিয়ে ৫০% থেকে ৭০% পর্যন্ত UVA ভেতরে চলে আসতে পারে। এই UVA-ই আসল ভিলেন। এটা সরাসরি চামড়া তাৎক্ষণিক তেমন কিছু ফিল করায় না; তাই আমরা টেরই পাই না ক্ষতি হচ্ছে। কিন্তু এটাই বলিরেখা, বয়সের ছাপ আর দাগছোপের প্রধান কারণ।
 
 যারা বছরের পর বছর গাড়ি চালান, তাদের জানালার পাশের গালে বেশি এজিং সাইন দেখা যাওয়ার মতো স্টাডিও আছে। কারণ ওই পাশটাই বেশি সময় কাঁচের ওপাশের রোদের সংস্পর্শে থাকে।
 
@@ -919,6 +1083,7 @@ There is a small technique for you, you can follow it if you want. High-end, hig
     id: 'whitening-creams',
     cats: ['Safety & Myths', 'Social Media Copy'],
     featured: true,
+    enLive: false,   // true করলে ইংরেজি লেখা দেখাবে; false হলে English বাটনে \"Coming soon\" দেখাবে
     titleEn: `The Deadly Shortcut of Whitening Creams`,
     titleBn: `ফর্সা করার ক্রিম ও ইনজেকশনের মরণফাঁদ`,
     tags: ['#ত্বকেরযত্ন', '#স্বাস্থ্যসচেতনতা', '#ক্ষতিকরকসমেটিকস', '#HealthySkin', '#SkincareRoutine', '#NaturalGlow', '#SafeSkincare', '#SkinHealth', '#NoToToxicBeauty', '#NaturalBeauty', '#SkinCareAwareness', '#GlowNaturally', '#DermatologyApproved', '#SayNoToMercury', '#ChemicalFreeSkin'],
@@ -936,7 +1101,7 @@ There is a small technique for you, you can follow it if you want. High-end, hig
 - দীর্ঘমেয়াদে স্কিন ক্যান্সার ও শরীরের অভ্যন্তরীণ অঙ্গ নষ্ট হওয়া
 - গর্ভাবস্থায় ব্যবহারে গর্ভস্থ শিশুর ওপর মারাত্মক কুপ্রভাব পড়া।
 
-তাহলে কীভাবে আপনি স্কিন সুন্দর করবেন? সহজ উত্তর তবে আপনকে খুব যত্নে করতে হবে।
+**তাহলে কীভাবে আপনি স্কিন সুন্দর করবেন?** উত্তর সহজ তবে আপনাকে খুব যত্নে করতে হবে।
 
 ক্ষতিকর নাইট ক্রিম কিংবা ইনজেকশন দিয়ে সুন্দর হওয়ার শর্টকাট মাথা থেকে একদম ঝেড়ে ফেলুন। ত্বক সুন্দর ও সুস্থ রাখার আসল রহস্য সঠিক স্কিন কেয়ারে। আপনার স্কিন টাইপ অনুযায়ী প্রতিদিন সকালে ও রাতে ক্লিনজার দিয়ে মুখ পরিষ্কার করুন এবং মানসম্মত ময়শ্চারাইজার ব্যবহার করুন। দিনের বেলা রোদের ক্ষতিকর রশ্মি থেকে বাঁচতে সানস্ক্রিন লাগান এবং রিএপ্লাই করুন। পর্যাপ্ত পানি পান এবং ভিটামিন সি সমৃদ্ধ খাবার খান। রাতে অন্তত সাত ঘণ্টা ঘুমান।
 `,
@@ -959,86 +1124,12 @@ So how do you beautify your skin? The answer is simple, but you have to be very 
 Remove the shortcut to beauty with harmful night cream or injection from the head. The real secret to keeping the skin beautiful and healthy is in the right skin care. Clean your face with cleanser every morning and night and use a quality moisturizer according to your skin type. Apply and reapply sunscreen to protect yourself from the harmful rays of the sun during the day. Drink plenty of water and eat foods rich in vitamin C. Sleep at least seven hours a night.
 `,
   },
-  {
-    id: 'trendy-products',
-    cats: ['Safety & Myths', 'Article'],
-    featured: false,
-    titleEn: `Trendy Skincare Products to Be Careful With`,
-    titleBn: `ট্রেন্ডি স্কিন কেয়ার প্রোডাক্ট থেকে দূরে থাকুন।`,
-    tags: [],
-    bn: `
-বর্তমানে skincare নিয়ে মানুষের আগ্রহ অনেক বেড়েছে। সামাজিক যোগাযোগমাধ্যমে প্রতিদিন নতুন নতুন product, beauty hack এবং “must-have” routine দেখা যায়। কিন্তু কোনো product জনপ্রিয় হলেই যে তা সবার ত্বকের জন্য প্রয়োজনীয় বা কার্যকর হবে এমন না।
-
-অনেক সময় অতিরিক্ত product ব্যবহার ত্বকের উপকার করার বদলে irritation, dryness, allergy বা ব্রণ বাড়িয়ে দিতে পারে। skincare-এর ক্ষেত্রে মূল কথা হলো: কম product, সঠিক product এবং নিয়মিত ব্যবহার। Dermatologists সাধারণত gentle cleanser, fragrance-free moisturizer এবং SPF 30 বা তার বেশি broad-spectrum sunscreen দিয়ে একটি সহজ routine শুরু করার পরামর্শ দেন।
-
-তাহলে কোন কোন product ব্যবহারের আগে একটু সতর্ক হওয়া উচিত?
-
-## Intimate wash: প্রতিদিন ব্যবহারের প্রয়োজন নেই
-
-অনেকেই মনে করেন intimate wash ব্যবহার না করলে ব্যক্তিগত পরিচ্ছন্নতা সম্পূর্ণ হয় না। বাস্তবে যোনির ভেতরের অংশ নিজে থেকেই পরিষ্কার থাকে এবং সেখানে স্বাভাবিক জীবাণুসমষ্টি একটি সুরক্ষামূলক পরিবেশ বজায় রাখতে সাহায্য করে। সুগন্ধিযুক্ত wash, vaginal deodorant বা douche ব্যবহার করলে এই স্বাভাবিক ভারসাম্যে ব্যাঘাত ঘটতে পারে।
-
-এর ফলে কারও কারও ক্ষেত্রে জ্বালাপোড়া, শুষ্কতা, অস্বস্তি বা vaginitis-এর মতো সমস্যা দেখা দিতে পারে। ACOG-এর পরামর্শ অনুযায়ী বাইরের অংশ, অর্থাৎ vulva, পরিষ্কারের জন্য সাধারণ পানি যথেষ্ট। প্রয়োজনে অল্প পরিমাণ fragrance-free mild cleanser ব্যবহার করা যায়, তবে যোনির ভেতরে কোনো ধরনের product ব্যবহার করা উচিত নয়।
-
-চুলকানি, দুর্গন্ধ, অস্বাভাবিক স্রাব বা ব্যথা হলে wash দিয়ে সমস্যা ঢাকার চেষ্টা না করে গাইনোকোলজিস্টের পরামর্শ নেওয়া উচিত।
-
-## Harsh facial scrub: ঘষলেই ত্বক উজ্জ্বল হয় না
-
-এপ্রিকট, আখরোট, চিনি বা শক্ত দানাযুক্ত facial scrub ত্বকে অতিরিক্ত ঘর্ষণ তৈরি করতে পারে। বিশেষ করে sensitive, dry বা acne-prone ত্বকে এসব scrub লালচে ভাব, জ্বালা, শুষ্কতা এবং ব্রণ বাড়াতে পারে।
-
-তবে সব ধরনের physical exfoliation সম্পূর্ণ নিষিদ্ধ নয়। মূল সমস্যা হয় যখন scrub-এর দানা শক্ত হয়, মুখে বেশি চাপ প্রয়োগ করা হয় অথবা ঘন ঘন ব্যবহার করা হয়। American Academy of Dermatology-এর মতে, exfoliation ভুলভাবে করলে ত্বকে irritation এবং acne breakout বাড়তে পারে।
-
-যাদের exfoliation প্রয়োজন, তারা ত্বকের ধরন অনুযায়ী dermatologist-এর পরামর্শে salicylic acid, lactic acid বা অন্য কোনো mild exfoliant ব্যবহার করতে পারেন। একই সময়ে scrub, exfoliating acid, retinol এবং acne treatment একসঙ্গে ব্যবহার করা উচিত নয়।
-
-## দামী facial oil: সবার ত্বকের জন্য নয়
-
-Facial oil সম্পূর্ণ অকার্যকর—এমন বলা ঠিক নয়। কিছু oil শুষ্ক ত্বকের moisture loss কমাতে সাহায্য করতে পারে। তবে এটি moisturizer-এর বিকল্প নয় এবং acne-prone ত্বকে কিছু oil blackhead, whitehead বা ব্রণ বাড়াতে পারে।
-
-কোন oil আপনার জন্য উপযোগী হবে, তা নির্ভর করে oil-এর ধরন, formulation এবং আপনার ত্বকের বৈশিষ্ট্যের ওপর। কিছু facial oil pore clogging করতে পারে বলে Cleveland Clinic সতর্ক করেছে।
-
-তৈলাক্ত বা ব্রণপ্রবণ ত্বকের জন্য সাধারণত fragrance-free, non-comedogenic moisturizer বেশি ব্যবহারিক। আর দামী product মানেই বেশি কার্যকর—এই ধারণাটিও সঠিক নয়।
-
-## Rose water: প্রয়োজনীয় নয়, আবার সবার জন্য ক্ষতিকরও নয়
-
-Rose water-কে অনেকেই toner, pore tightener বা glow booster হিসেবে ব্যবহার করেন। কিন্তু এটি ত্বককে স্থায়ীভাবে ফর্সা করবে, pore ছোট করবে বা hydration-এর জন্য অপরিহার্য—এমন শক্ত বৈজ্ঞানিক প্রমাণ নেই।
-
-অন্যদিকে rose water-কে একেবারে নিষিদ্ধ বলাও ঠিক নয়। সমস্যাটি মূলত formulation-এ। কোনো product-এ fragrance, essential oil বা irritating preservative থাকলে sensitive ত্বকে জ্বালা বা allergic contact dermatitis হতে পারে। Fragrance এবং preservative cosmetics-related reaction-এর সাধারণ কারণগুলোর মধ্যে পড়ে।
-
-তাই rose water ব্যবহার করতে চাইলে fragrance-free product বেছে নিন এবং প্রথমে ছোট জায়গায় patch test করুন। ব্যবহারের পর চুলকানি, জ্বালা বা লালচে ভাব দেখা দিলে productটি বন্ধ করুন।
-
-## E-cap বা Vitamin E capsule মুখে মাখা
-
-Vitamin E capsule সাধারণত খাওয়ার জন্য তৈরি করা হয়। ক্যাপসুল কেটে সরাসরি মুখে লাগালে সবার উপকার হবে—এমন প্রমাণ নেই। এর তেল ঘন ও আঠালো হওয়ায় কিছু মানুষের ক্ষেত্রে pore clogging বা ব্রণ বাড়তে পারে।
-
-Topical vitamin E ব্যবহারে কিছু মানুষের allergic contact dermatitis-ও হতে পারে, আর বিভিন্ন skin condition-এ এর কার্যকারিতা নিয়ে controlled clinical evidence সীমিত।
-
-তাই acne-prone মুখে E-cap সরাসরি ব্যবহার না করাই ভালো। চুল বা scalp-এ ব্যবহার করলেও এটি খুশকি নিরাময়ের প্রমাণিত চিকিৎসা নয়; বরং scalp অতিরিক্ত তৈলাক্ত করতে পারে। Vitamin E ব্যবহার করতে হলে ত্বকের জন্য তৈরি, সঠিক formulation-যুক্ত product বেছে নিন।
-
-## Sunscreen spray: অকেজো নয়, কিন্তু প্রয়োগের ভুলে সুরক্ষা কমতে পারে
-
-Sunscreen spray সম্পূর্ণ অকেজো—এমন দাবি সঠিক নয়। তবে spray ব্যবহার করে ত্বকে পর্যাপ্ত এবং সমান layer তৈরি করা তুলনামূলক কঠিন। অনেক সময় product বাতাসে ছড়িয়ে যায় অথবা ত্বকের কিছু অংশ বাদ পড়ে যায়। ফলে বোতলে লেখা SPF-এর মতো সুরক্ষা নাও পাওয়া যেতে পারে।
-
-American Academy of Dermatology-এর পরামর্শ অনুযায়ী spray sunscreen ব্যবহার করলে ত্বক চকচকে ভেজা দেখানো পর্যন্ত যথেষ্ট পরিমাণে spray করতে হবে এবং এরপর হাত দিয়ে ভালোভাবে ছড়িয়ে দিতে হবে। মুখে সরাসরি spray করা উচিত নয়; হাতে নিয়ে মুখে লাগাতে হবে। বাতাসের মধ্যে spray করলে তা শ্বাসের সঙ্গে শরীরে ঢোকার ঝুঁকি থাকে।
-
-যারা সহজে সঠিক পরিমাণে sunscreen লাগাতে চান, তাদের জন্য cream বা lotion sunscreen অনেক সময় বেশি সুবিধাজনক। যেকোনো sunscreen-এর ক্ষেত্রে broad-spectrum, SPF 30 বা তার বেশি এবং water-resistant product বেছে নেওয়া ভালো।
-
-তাহলে একটি সহজ skincare routine কেমন হবে?
-
-**ত্বকের প্রয়োজন অনুযায়ী routine বদলাতে পারে। তবে অধিকাংশ মানুষের জন্য একটি basic routine এমন হতে পারে:**
-
-## সকালে
-
-Gentle cleanser অথবা ত্বকের প্রয়োজন অনুযায়ী শুধু পানি।
-
-Fragrance-free moisturizer।
-
-Broad-spectrum SPF 30 বা তার বেশি sunscreen।
-`,
-    en: ``,   // ইংরেজি সংস্করণ নেই
-  },
+ 
   {
     id: 'brightening-tips',
-    cats: ['Brand Voice', 'Social Media Copy'],
+    cats: ['Article', 'Social Media Copy', 'Routine & Habits'],
     featured: false,
+    enLive: false,   // true করলে ইংরেজি লেখা দেখাবে; false হলে English বাটনে \"Coming soon\" দেখাবে
     titleEn: `Safe Tips to Brighten Skin Faster`,
     titleBn: `ত্বক দ্রুত উজ্জ্বল করার কার্যকর টিপস`,
     tags: [],
@@ -1055,7 +1146,7 @@ Broad-spectrum SPF 30 বা তার বেশি sunscreen।
 
 তাই যখন কেউ রাত বারোটায় মেসেজ করে লেখেন, "আপু, আমাকে যত দ্রুত সম্ভব ফরসা হতে হবে" — আমরা কখনো বিরক্ত হই না, তাকে অসচেতনও মনে করি না। বরং বুঝি, কতটা কষ্ট থেকে এই মেসেজটা এসেছে। তাই যতটা সম্ভব পাশে থাকার চেষ্টা করি।
 
-**একটা কথা পরিষ্কার করে বলে রাখি — কোনো প্রোডাক্ট আপনাকে "ফরসা" বানিয়ে দেবে, এমন দাবি আমরা কখনো করি না। ব্রাইটেনিং প্রোডাক্ট আমাদের কাছে অনেক আছে, কিন্তু আজকের পোস্টে সেটা নিয়ে বলছি না। প্রোডাক্টের পাশাপাশি নিচের অভ্যাসগুলো মেনে চলাও সমান জরুরি —**
+একটা কথা পরিষ্কার করে বলে রাখি — কোনো প্রোডাক্ট আপনাকে "ফরসা" বানিয়ে দেবে, এমন দাবি আমরা কখনো করি না। ব্রাইটেনিং প্রোডাক্ট আমাদের কাছে অনেক আছে, কিন্তু আজকের পোস্টে সেটা নিয়ে বলছি না। প্রোডাক্টের পাশাপাশি নিচের অভ্যাসগুলো মেনে চলাও সমান জরুরি
 
 ## 🪡 সানস্ক্রিনকে প্রায়োরিটি দিন
 
@@ -1085,56 +1176,62 @@ Broad-spectrum SPF 30 বা তার বেশি sunscreen।
 `,
     en: ``,   // ইংরেজি সংস্করণ নেই
   },
-  {
-    id: 'intimate-area-care',
-    cats: ['Brand Voice', 'Social Media Copy'],
+  
+   {
+    id: 'skino brand storytelling',
+    cats: ['Brand Voice'],
     featured: false,
-    titleEn: `Intimate-Area Darkening: A Calm, Judgment-Free Guide`,
-    titleBn: `প্রাইভেট এরিয়ার রঙ গাঢ় হওয়া: যত্নের গাইড`,
+    enLive: false,   // true করলে ইংরেজি লেখা দেখাবে; false হলে English বাটনে \"Coming soon\" দেখাবে
+   titleEn: `skin'O Brand Storytelling
+   `,
+    titleBn: `skin'O - স্কিনকেয়ার হোক  নাগালের মধ্যেই
+    `,
     tags: [],
     bn: `
-আপুদের ইনবক্সে প্রতিদিনই এমন মেসেজ আসে  "আপু, প্রাইভেট এরিয়ার রঙ গাঢ় হয়ে যাচ্ছে, সামনেই বিয়ে, কীভাবে দ্রুত ঠিক করব? লজ্জায় কাউকে বলতেও পারছি না।" 🥹
+ **দামি প্রোডাক্ট কিনতে না পারার দুঃখ** 
+স্কিন কেয়ার সম্পর্কে যখন আমরা একটুআধটু জানা শুরু করি এবং সঠিক পণ্য নেওয়ার জন্য প্রাইস চেক করতে যায় তখনই সবার চোখ কপালে উঠে যায়। সোশ্যাল মিডিয়ায় একটি জনপ্রিয় কথা ভেসে বেড়ায়, “স্কিন কেয়ার প্রোডাক্ট এর দাম শুনলে আমার ‘স্কিন’ একদিকে আর ‘কেয়ার’ আরেকদিকে দৌড়ে পালাই।” হা হা হা। এটাই বাস্তব। 
 
-প্রথমেই একটা কথা বলি, প্রাইভেট এরিয়াও আমাদের শরীরেরই একটা অংশ, তাই না? এটা কোনো "নিষিদ্ধ" বিষয় না, লজ্জারও কিছু না। কিন্তু ছোটবেলা থেকে আমাদের এমনভাবে শেখানো হয় যেন এই নিয়ে কথা বলাই যেন অন্যায়। ফলে হাজারো মানুষ নিজের সমস্যার কথা মুখ ফুটে বলতে পারেন না — ভেতরে ভেতরে ইনসিকিউরিটিতে ভোগেন, আত্মবিশ্বাস হারান, এমনকি নিজের শরীরকেই অপছন্দ করতে শুরু করেন।
+আমি নিজেও যখন স্কিন কেয়ার সম্পর্কে জানতাম না। তখন নিজেকে একটু সুন্দর দেখানোর জন্য বাজার থেকে রেনডম একটা ফেসওয়াস এবং একটা ফেয়ারনেস ক্রিম কিনতাম। জাস্ট এতোটুকুই। এবং মজার বিষয় হলো এগুলোর দামও খুবই খুবই কম ছিল। কিন্তু যখন সঠিক স্কিন কেয়ার সম্পর্কে জানা শুরু করলাম তখন বুঝলাম আমার স্কিনের জন্য ঠিক কী কী প্রোডাক্ট দরকার। স্কিন টাইপ অনুযায়ী ক্লিনজার, সানস্ক্রিন, ময়েশ্চারাইজার, ডাবল ক্লিনজিং, সিরাম এপ্লাই সবকিছুর ধারণা চলে আসলো। কিন্তু এত ধারণা থেকেই বা কি হবে যদি স্কিন কেয়ার করার জন্য পছন্দের পণ্যটি কিনতে না পারি। 
+বাংলাদেশের মতো মধ্যম আয়ের দেশে দামি দামি স্কিন কেয়ার পণ্য কেনা অনেক জটিল একটা বিষয়। আমিও এমন জটিলতায় স্কিন কেয়ার করতে অনেক হিমশিম খেয়েছি। শুধু আমি না আমার মত বেশিরভাগ মানুষ এখনো প্রতিনিয়ত স্কিন কেয়ার প্রোডাক্ট কেনার টাকা যোগাড় করতে হিমশিম খায়।
+পছন্দের পণ্যটি ভালো হলেও দাম দেখে আর কেনা হয় না। আবার কম দামের পণ্য কিনতে গিয়েও মনে প্রশ্ন আসে, এটি কি আমার ত্বকের জন্য ঠিক হবে?
+এ প্রশ্নের উত্তর পূর্বে হয়তো ছিল না। কিন্তু এখন আছে।  একটা সময় অনেকের কাছে উন্নত স্কিনকেয়ারের ধারণা ছিল বিদেশি ব্র্যান্ডের প্যাকেজিং আর দামি পণ্য। কিন্তু ত্বকের যত্নের আসল বিষয়টি তো বোতলের গায়ে লেখা দাম কিংবা দেশের নামে নয়। বরং পণ্যের সঠিক ফর্মুলেশন। উপাদানের যথাযথ ব্যবহার। আর নিজের ত্বকের প্রয়োজন বুঝে নিয়মিত যত্ন নেওয়া।
 
-মনে রাখবেন, আল্লাহ আপনার শরীর তৈরি করেছেন আপনাকে বাঁচিয়ে রাখার জন্য, শক্তি দেওয়ার জন্য, আগলে রাখার জন্য — লজ্জা দেওয়ার জন্য নয়। তাই শরীরের কোনো অংশকে ঘৃণা করার আগে একবার ভাবুন, এটাও তো আপনারই অংশ। 🫶🏻
+ঠিক এই বিষয়টাকেই বাস্তব করতে শুরু হয় বাংলাদেশি একটি ব্র্যান্ড, নাম তার **skin’O** । 
 
-**চলুন প্রথমে জেনে নিই, কেন এই জায়গার রঙ গাঢ় হয় —**
 
-> 🌸 মেলানিন ও জেনেটিক্স: দক্ষিণ এশীয়দের ত্বকে এমনিতেই মেলানিনের পরিমাণ তুলনামূলক বেশি থাকে। নির্দিষ্ট কিছু জায়গায় মেলানিন কোষ ঘনভাবে জমে যাওয়ার প্রবণতা থাকে, ফলে সেই অংশ আশেপাশের ত্বকের চেয়ে গাঢ় দেখায়। এটা সম্পূর্ণ স্বাভাবিক, কোনো রোগ না।
+**কোরিয়ান ফর্মুলেশন বাংলাদেশের বাজারে**
+skin’O-এর পেছনে রয়েছে একটি আলাদা উৎপাদন-ভাবনা। কোরিয়ান স্কিনকেয়ার বিশ্বজুড়ে পরিচিত তার উদ্ভাবনী ফর্মুলেশন এবং ত্বকের যত্ন নিয়ে নিরন্তর কাজের জন্য। তথ্যমতে,  Coslab Personal Care Limited-এর এই বাংলাদেশি স্কিনকেয়ার ব্র্যান্ড কোরিয়া থেকে নেওয়া ফর্মুলেশন ব্যবহার করে এবং বাংলাদেশে পণ্য উৎপাদন করে। 
+ফলে বাংলাদেশের মানুষের জন্য স্কিন কেয়ার প্রোডাক্ট ক্রয় করা অনেক সহজ হয়ে গেছে। এবং খুব সুন্দর ভাবেই তারা ভালো মানের পণ্য উৎপাদন করে অল্প সময়ে মধ্যে বাংলাদেশের মানুষের আস্থা অর্জন করে ফেলেছে। এবং তাদের কাজকে স্কেল আপ করতে সম্প্রতি  ২০২৬ সালের অক্টোবর মাসেই skin’O-এর প্রস্তুতকারক Coslab Personal Care Ltd. দক্ষিণ কোরিয়ার কসমেটিকস বিশেষজ্ঞ Dr Junoh Kim-কে গবেষণা ও উন্নয়ন পরামর্শক হিসেবে যুক্ত করে। কসমেটিকস গবেষণায় তাঁর দীর্ঘ ৩০ অভিজ্ঞতা রয়েছে। 
 
-> 🌸 হরমোনাল পরিবর্তন: বয়ঃসন্ধি, পিরিয়ড, প্রেগন্যান্সি, এমনকি জন্মনিয়ন্ত্রণ পিলের কারণেও ইস্ট্রোজেন-প্রোজেস্টেরনের ওঠানামা মেলানিন প্রোডাকশন বাড়িয়ে দিতে পারে। এ কারণেই আন্ডারআর্ম, ইনার থাই বা প্রাইভেট এরিয়ার মতো জায়গা তুলনামূলক বেশি ডার্ক দেখাতে পারে।
+বাংলাদেশে বসেই বিশ্বমানের কোরিয়ান ফর্মুলেশনে তৈরি হচ্ছে আপনার নিত্যদিনের স্কিনকেয়ার। এটি বাংলাদেশি স্কিন কেয়ার এক নতুন অধ্যায়ের সূচনা। ব্র্যান্ডটির পণ্য উন্নয়নের এ পরিকল্পটি বেশ প্রশংসনীয়। 
 
-> 🌸 ঘর্ষণ: টাইট আন্ডারগার্মেন্টস, জিন্স, এমনকি বারবার শেভিং-ওয়াক্সিং থেকেও ত্বকে ছোট ছোট জ্বালাপোড়া হয়। এই জ্বালাপোড়া সারতে গিয়ে ত্বক বাড়তি মেলানিন জমিয়ে ফেলে, যাকে বলে পোস্ট-ইনফ্লামেটরি হাইপারপিগমেন্টেশন — এভাবেই জায়গাটা কালচে হয়ে যায়।
+**আপনার বাজেট। আপনার রুটিন।**
+স্কিনকেয়ার শুরু করতে একসঙ্গে অনেক পণ্য কেনার দরকার নেই। একটি উপযুক্ত ক্লেনজার, ময়েশ্চারাইজার এবং দিনের বেলায় সানস্ক্রিন দিয়ে অনেকেই নিজের রুটিন শুরু করতে পারেন।
+skin’O-এর পণ্য তালিকায় রয়েছে ফেসওয়াশ, টোনার, ময়েশ্চারাইজার, সিরাম, সানস্ক্রিন, বডি লোশন এবং শাওয়ার জেলের মতো দৈনন্দিন ব্যবহারের পণ্য।
 
-> 🌸 আর্দ্রতা ও বাতাস চলাচলে ঘাটতি: এই জায়গা সবসময় ঢাকা থাকে বলে ফ্রেশ বাতাস কম পৌঁছায়, ঘাম-আর্দ্রতা জমে "ক্লোজড এনভায়রনমেন্ট" তৈরি করে — যা ধীরে ধীরে পিগমেন্টেশন বাড়ায়।
+skin’O সব সময় চেষ্টা করছে সর্বোচ্চ গুণগত মান বজায় রেখে আমাদের বাজেটের মধ্যে সমাধান পৌঁছে দিতে। তাদের অফিসিয়াল ওয়েবসাইট ছাড়াও Shajgoj, Rokomari সহ দেশের জনপ্রিয় সব অফলাইন ও অনলাইন প্ল্যাটফর্মে সহজলভ্য করা হয়েছে skin’O-এর পণ্যসমূহ।  আকর্ষণীয় কম্বো অফার আর বিশেষ ছাড়ের মাধ্যমে তারা সঠিক স্কিন কেয়ার পৌছে দিচ্ছে সবার দোড়গোড়ায়।
+কম দামের পণ্য মানেই খারাপ নয়। আবার দাম কম হলেই পণ্যটি সবার জন্য উপযুক্ত হবে এমনও নয়। প্রত্যেকের ত্বক আলাদা প্রত্যেকের ত্বকের ধরন অনুযায়ী তাদেরকে আলাদা আলাদা প্রোডাক্ট বেছে নিতে হবে। 
 
-(বয়সও একটা কারণ — বয়সের সাথে ইস্ট্রোজেন কমে গিয়ে মেলানিন প্রোডাকশনে কিছুটা তারতম্য আসতে পারে, এটাও পুরোপুরি স্বাভাবিক।)
+**প্রোডাক্টের প্রতিশ্রুতি**
+ত্বকের স্বাভাবিক গঠন আছে। কারও ত্বক তৈলাক্ত। কারও শুষ্ক। কারও আবার ব্রণ বা সংবেদনশীলতার সমস্যা রয়েছে। সবার ত্বক এক রকম হবে না, আর সবার রুটিনও এক হওয়ার দরকার নেই। তাই স্কিনকেয়ার বেছে নেওয়ার সময় শুধু ট্রেন্ড বা আকর্ষণীয় প্রতিশ্রুতির দিকে না তাকিয়ে উপাদান, ব্যবহারবিধি এবং নিজের ত্বকের প্রয়োজন বোঝা জরুরি।
 
-**এবার যত্নের পালা —**
+skin'O চেষ্টা করেছে প্রতিটি ত্বকের সমস্যার সমাধান দিতে।
 
-> 🌷 পরিষ্কার রাখার নিয়ম: ভ্যাজাইনার ভেতরে সাবান/ওয়াশ ব্যবহার করবেন না, এই অংশ নিজেই নিজেকে পরিষ্কার রাখতে সক্ষম। বাইরের অংশ হালকা কুসুম গরম পানিতে ধুয়ে নিলেই যথেষ্ট, চাইলে মাইল্ড আনসেন্টেড ক্লিনজার আলতো করে ব্যবহার করতে পারেন। লেবুর রস বা বেকিং সোডার মতো ঘরোয়া টোটকা এই জায়গায় একদম এড়িয়ে চলুন — এগুলো ত্বক পুড়িয়ে দিতে পারে, দাগ আরও গাঢ়ও করে ফেলতে পারে।
+নিয়াসিনামাইড ও গ্রিন টি-যুক্ত লাইটওয়েট জেল ময়েশ্চারাইজার থেকে শুরু করে আলফা আরবুটিন ও নিয়াসিনামাইডের ব্রাইটনিং সিরাম, টি ট্রি টোনার, ভিটামিন সি ফেসওয়াশ, হাইড্রেশন বুস্ট জেল এমনকি চুলের যত্ন সহ প্রায় সব ধরনের প্রোডাক্ট তাদের রয়েছে। 
 
-> 🌷 ঘর্ষণ কমানো সবচেয়ে জরুরি: টাইট আন্ডারওয়্যার-জিন্সের বদলে ঢিলেঢালা কটন আন্ডারওয়্যার বেছে নিন। এই স্কিন এমনিতেই সেনসিটিভ, ঘর্ষণ যত কম, ইরিটেশন-কালচে ভাবও তত কম।
+এই প্রোডাক্টগুলো অতিরিক্ত অবাস্তব কোনো প্রতিশ্রুতি দেয় না। বরং হেলদি ও সুন্দর স্কিন বলতে যা বুঝায় সেটাই পাবেন। 
 
-> 🌷 হেয়ার রিমুভালে সতর্কতা: এই এলাকায় ওয়াক্সিং না করাই ভালো। রেজার ব্যবহার করলে ধারালো, পরিষ্কার রেজার বেছে নিন, যাতে ইচিং বা ইনগ্রোন হেয়ার কম হয়।
+**Beauty Is Reality**
+skin’O-এর “Beauty Is Reality” কথাটি দৈনন্দিন স্কিনকেয়ারের সঙ্গে খুবই প্রাসঙ্গিক। বাস্তব জীবনে সবার ত্বক এক রকম নয়। সবার বাজেটও এক নয়। তাই ভালো স্কিনকেয়ার মানে সবার জন্য একই রুটিন নয়।
 
-> 🌷 শুষ্ক রাখুন: পরিষ্কারের পর জায়গাটা ভালোভাবে শুকিয়ে নিন, আর্দ্রতা জমতে দেবেন না।
+বরং নিজের ত্বককে বোঝা এবং প্রয়োজন অনুযায়ী পণ্য বেছে নেওয়া দিয়েই যত্ন শুরু হয়।
+skin’O-এর বাংলাদেশে স্কিন কেয়ারকে একটি সহজ অভ্যাসে নিয়ে আসতে পারছে। কারণ স্কিনকেয়ার তখনই একটি সুন্দর অভ্যাস হয়ে উঠতে পারে যখন সেটি মানুষের জন্য সহজলভ্য হবে এবং জীবনের সঙ্গে মানিয়ে যাবে।
 
-> 🌷 পিরিয়ডে বাড়তি সতর্কতা: প্রতি ৪-৬ ঘণ্টা পরপর প্যাড বদলান, নাহলে ব্যাকটেরিয়া বেড়ে ইনফেকশন বা দুর্গন্ধ হতে পারে।
-
-> 🌷 ব্রাইটেনিং চাইলেও কড়া কেমিক্যাল থেকে দূরে থাকুন: হাইড্রোকুইনোন বা স্টেরয়েডযুক্ত ক্রিম গাইডলাইন ছাড়া ব্যবহার করলে ইরিটেশন, এমনকি স্থায়ী ক্ষতিও হতে পারে। এর বদলে নিয়াসিনামাইড বা লিকোরিস এক্সট্র্যাক্টের মতো জেন্টল ইনগ্রেডিয়েন্ট নিরাপদ — তাও প্রথমবার প্যাচ টেস্ট করে নেবেন।
-
-> 🌷 হরমোনাল পরিবর্তনকে মেনে নিন: বয়স, পিরিয়ড, প্রেগন্যান্সি বা হরমোনের কারণে এই জায়গার রঙ একটু গাঢ় হওয়া সম্পূর্ণ স্বাভাবিক, কোনো ত্রুটি না।
-
-> 🌷 দরকার হলে ডাক্তার দেখান: রঙ পরিবর্তনের সাথে চুলকানি, জ্বালাপোড়া, অস্বাভাবিক ডিসচার্জ বা নতুন কোনো র‍্যাশ/লাম্প দেখা দিলে নিজে থেকে কিছু ট্রাই না করে দ্রুত ডাক্তার দেখান।
-
-একটা অনুরোধ — নিজের শরীরকে অপমান করা বন্ধ করুন, নিজেকে ছোট করে দেখাও বন্ধ করুন। আপনি কোনো "পারফেক্ট পুতুল" নন, আপনি একজন বাস্তব মানুষ — বাস্তব মানুষের শরীরে বৈচিত্র্য থাকাটাই স্বাভাবিক।
-
-স্কিন, হেয়ার বা বডি নিয়ে কোনো সমস্যা থাকলে নির্দ্বিধায় পেইজে মেসেজ দিন, ইনশাআল্লাহ সমাধানের চেষ্টা করব। সাথে পাবেন আমাদের অথেন্টিক প্রোডাক্টও। 🩷
+skin’O-এর জন্য অনেক অনেক দোয়া শুভকামনা রইল। তারা যেন আমাদের জন্য আরো ভালো ভালো প্রোডাক্ট উপহার দিতে পারে।
 `,
     en: ``,   // ইংরেজি সংস্করণ নেই
   },
+  
 ];
 </script>
 
@@ -1227,8 +1324,9 @@ const count=c=>c==='All Samples'?PIECES.length:PIECES.filter(p=>p.cats.includes(
 document.querySelectorAll('[data-t]').forEach(el=>{const v=el.dataset.t.split('.').reduce((o,k)=>o&&o[k],SITE);if(typeof v==='string')el.innerHTML=fmt(v)});
 $('photo').src=PHOTO;$('logoImg').src=LOGO;$('footLogo').src=LOGO_FOOTER;
 function card(p){const a=document.createElement('article');a.className='card';a.tabIndex=0;a.setAttribute('role','link');a.onclick=()=>nav('piece/'+p.id);a.onkeydown=e=>{if(e.key==='Enter')a.onclick()};
-a.innerHTML=`<div class="tags">${p.cats.map(c=>`<span class="tag">${esc(c)}</span>`).join('')}</div><h3>${esc(p.titleEn)}</h3><p class="bn" lang="bn">${esc(p.ex)}</p><span class="go">Read full piece · ${p.en&&p.en.trim()?'বাংলা + EN':'বাংলা'} →</span>`;return a}
+a.innerHTML=`<div class="tags">${p.cats.map(c=>`<span class="tag">${esc(c)}</span>`).join('')}</div><h3>${esc(p.titleEn)}</h3><p class="bn" lang="bn">${esc(p.ex)}</p><span class="go">Read full piece · ${enOn(p)?'বাংলা + EN':'বাংলা'} →</span>`;return a}
 let cur=null,lang='bn';
+const enOn=p=>p.enLive===true&&!!(p.en&&p.en.trim());
 function view(v){['home','listView','detailView'].forEach(x=>$(x).classList.toggle('on',x===v))}
 let stack=[];
 function nav(h){h=String(h).replace(/^#\/?/,'');stack.push(h);try{history.replaceState(null,'','#/'+h)}catch(e){}route(h)}
@@ -1241,9 +1339,12 @@ view('home');document.title='Sher Solaiman | Skincare Content Writer'}
 function openList(c){view('listView');$('listTitle').textContent=c==='All Samples'?'All writing samples':c;$('listKicker').textContent=c==='All Samples'?'Every format, every topic':'Category';const g=$('listGrid');g.innerHTML='';const items=PIECES.filter(p=>c==='All Samples'||p.cats.includes(c));
 if(!items.length)g.innerHTML=`<div class="empty"><i class="fa-solid ${CMAP[c][1]}" style="font-size:30px;color:${CMAP[c][2]}"></i><p style="margin-top:10px"><b>${esc(c)}</b> samples aren’t on this page yet.</p><p style="margin-top:6px">Need this format for your brand? <a href="#/" data-go="contact" style="color:var(--brand);font-weight:700">Tell me about the project →</a></p></div>`;
 items.forEach(p=>g.appendChild(card(p)));bindGo(g);document.title=c+' — Sher Solaiman'}
-function openPiece(p){cur=p;view('detailView');$('dCats').innerHTML=p.cats.map(c=>`<span class="tag">${esc(c)}</span>`).join('');const hasEn=!!(p.en&&p.en.trim());$('langSw').hidden=!hasEn;lang=hasEn&&lang==='en'?'en':'bn';paint();document.title=p.titleEn+' — Sher Solaiman'}
+function openPiece(p){cur=p;view('detailView');$('dCats').innerHTML=p.cats.map(c=>`<span class="tag">${esc(c)}</span>`).join('');$('langSw').hidden=false;lang='bn';paint();document.title=p.titleEn+' — Sher Solaiman'}
 function setLang(l){lang=l;paint()}
-function paint(){const p=cur,en=lang==='en'&&p.en&&p.en.trim();$('dTitle').textContent=en?p.titleEn:p.titleBn;$('dTitle').classList.toggle('bn',!en);$('dTitle').lang=en?'en':'bn';const b=$('dBody');b.innerHTML=md(en?p.en:p.bn);b.lang=en?'en':'bn';b.classList.toggle('bn',!en);document.querySelectorAll('#langSw button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.l===lang));$('dTags').innerHTML=(p.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}
+function paint(){const p=cur,isEn=lang==='en';$('dTitle').textContent=isEn?p.titleEn:p.titleBn;$('dTitle').classList.toggle('bn',!isEn);$('dTitle').lang=isEn?'en':'bn';const b=$('dBody');
+if(isEn&&!enOn(p)){b.className='prose';b.lang='en';b.innerHTML='<div class="soon" role="status"><div class="soon-big">Coming soon</div><p>The English version of this piece is on its way.</p></div>'}
+else{b.innerHTML=md(isEn?p.en:p.bn);b.lang=isEn?'en':'bn';b.className='prose'+(isEn?'':' bn')}
+document.querySelectorAll('#langSw button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.l===lang));$('dTags').innerHTML=(p.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}
 async function shareCur(){try{if(navigator.share)await navigator.share({title:cur.titleEn,url:location.href});else{await navigator.clipboard.writeText(location.href);$('shareLbl').textContent='Link copied!';setTimeout(()=>$('shareLbl').textContent='Share this piece',2000)}}catch(e){}}
 function go(id){const e=$(id);if(e)e.scrollIntoView({behavior:'smooth',block:'start'})}
 function bindGo(root){root.querySelectorAll('[data-go]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();$('mnav').classList.remove('open');const t=a.dataset.go;if($('home').classList.contains('on'))go(t);else{nav('');setTimeout(()=>go(t),200)}}))}
